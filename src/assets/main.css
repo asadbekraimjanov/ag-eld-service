@@ -1,1 +1,31 @@
 @import "tailwindcss";
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('@/assets/fonts/poppins/Poppins-Regular.ttf');
+}
+
+body {
+    font-family: 'Poppins';
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Scrollbar track */
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+/* Scrollbar thumb */
+::-webkit-scrollbar-thumb {
+    background: #bdd6f6;
+    border-radius: 10px;
+}
+
+/* Hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #93C5FD;
+}
