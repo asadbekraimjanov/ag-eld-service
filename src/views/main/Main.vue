@@ -3,8 +3,8 @@
         <div class="relative min-h-screen shadow-lg">
             <div class="absolute inset-0 z-0">
 <!--                <img class="absolute w-full h-full object-cover" src="@/assets/images/main2.jpg" alt="">-->
-                <video class="absolute w-full h-full object-cover" src="/istockphoto-1443871954-640_adpp_is.mp4" autoplay muted loop></video>
-                <div class="absolute inset-0 bg-black/80"></div>
+                <video class="absolute w-full h-full object-cover" src="/new2.mp4" autoplay muted loop></video>
+                <div class="absolute inset-0 bg-black/70"></div>
             </div>
 
             <div class="relative z-20 py-8">
@@ -50,10 +50,10 @@
                                 <span>Get Started</span>
                                 <el-icon class="mt-1 ml-4 text-lg"><Right /></el-icon>
                             </el-button>
-                            <div class="flex items-center gap-2 bg-black font-semibold p-4 rounded cursor-pointer transition-all duration-300 hover:bg-gray-500/50 hover:scale-[1.08]">
-                                <img src="@/assets/tabler-icons/phone-call.svg" alt="">
+                            <a href="tel:+998940772200" class="flex items-center gap-2 bg-black font-semibold p-4 rounded cursor-pointer transition-all duration-300 hover:bg-gray-500/50 hover:scale-[1.08]">
+                                <img src="@/assets/tabler-icons/phone-call.svg" alt="Phone" />
                                 <span>(94) 077 22 00</span>
-                            </div>
+                            </a>
                         </div>
                     </Transition>
                 </div>

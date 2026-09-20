@@ -33,22 +33,22 @@
     </div>
     <div class="flex items-center p-6 mt-10">
         <div class="w-1/4 text-center px-10">
-            <p class="text-5xl font-semibold text-yellow-800">300+</p>
+            <p class="text-5xl font-semibold text-[#CFA01A]">300+</p>
             <hr class="border-gray-300 my-4">
             <p class="text-gray-800">MC Customers</p>
         </div>
         <div class="w-1/4 text-center px-10">
-            <p class="text-5xl font-semibold text-yellow-800">500+</p>
+            <p class="text-5xl font-semibold text-[#CFA01A]">500+</p>
             <hr class="border-gray-300 my-4">
             <p class="text-gray-800">Number of Companies</p>
         </div>
         <div class="w-1/4 text-center px-10">
-            <p class="text-5xl font-semibold text-yellow-800">1500+</p>
+            <p class="text-5xl font-semibold text-[#CFA01A]">1500+</p>
             <hr class="border-gray-300 my-4">
             <p class="text-gray-800">Active Trucks</p>
         </div>
         <div class="w-1/4 text-center px-10">
-            <p class="text-5xl font-semibold text-yellow-800">5+</p>
+            <p class="text-5xl font-semibold text-[#CFA01A]">5+</p>
             <hr class="border-gray-300 my-4">
             <p class="text-gray-800">Years of Experience</p>
         </div>

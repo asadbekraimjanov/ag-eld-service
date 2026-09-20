@@ -1,5 +1,8 @@
 <template>
-    <p class="text-[#CFA01A] font-bold text-3xl text-center">What we offer?</p>
+    <div class="flex items-center justify-center gap-20">
+        <p class="text-[#CFA01A] font-semibold text-4xl leading-14">Explore Our Trucking Support Services</p>
+    </div>
+<!--    <p class="text-[#CFA01A] font-bold text-3xl text-center">What we offer?</p>-->
     <div class="flex justify-center gap-[4%] flex-wrap">
         <div class="flex justify-between items-center w-full mt-14">
             <div class="w-[43%] animate-slide-left">
