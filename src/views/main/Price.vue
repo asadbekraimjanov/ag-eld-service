@@ -4,7 +4,7 @@
     <div class="flex justify-center mt-4">
         <el-switch v-model="togglePeriodMonthly" inactive-text="YEARLY" active-text="MONTHLY" style="--el-switch-on-color: #02A76F" />
     </div>
-    <div class="flex justify-center gap-8 pt-14">
+    <div class="flex justify-center flex-wrap gap-8 pt-14">
         <el-card class="w-80 hover:-translate-y-4">
             <div class="relative w-40 h-20">
                 <!-- 3-chi -->

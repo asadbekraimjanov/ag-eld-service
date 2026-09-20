@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="relative">
         <div class="relative min-h-screen shadow-lg">
             <div class="absolute inset-0 z-0">
 <!--                <img class="absolute w-full h-full object-cover" src="@/assets/images/main2.jpg" alt="">-->
@@ -71,10 +71,14 @@
         <div class="relative min-h-[680px] mt-12">
             <Contact />
         </div>
+
+        <div class="w-14 h-14 rounded-full bg-[#CFA01A] text-white fixed font-bold flex items-center justify-center right-10 top-[calc(100vh-5rem)]">
+            <img class="scale-120" src="@/assets/tabler-icons/message-dots.svg" alt="">
+        </div>
     </div>
 </template>
 <script setup>
-import {ArrowRight, BottomRight, CaretRight, PhoneFilled, Right, Setting} from "@element-plus/icons-vue";
+import {PhoneFilled, Right, Setting} from "@element-plus/icons-vue";
 import {ref} from "vue";
 import Services from "@/views/main/Services.vue";
 import AboutUs from "@/views/main/AboutUs.vue";
