@@ -59,10 +59,10 @@
                 </div>
             </div>
         </div>
-        <div class="via-gray-50 px-32 py-16 border-t-2 border-gray-800">
+        <div class="via-gray-50 px-32 pt-20 py-32 border-t-2 border-gray-800">
             <Services />
         </div>
-        <div class="bg-[#E9ECEF] px-32 py-16">
+        <div class="bg-[#E9ECEF] px-32 py-20">
             <AboutUs />
         </div>
         <div class="via-gray-50 px-32 py-16">
