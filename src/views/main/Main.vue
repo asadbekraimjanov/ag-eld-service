@@ -68,6 +68,9 @@
         <div class="via-gray-50 px-32 py-16">
             <Price />
         </div>
+        <div class="relative min-h-[680px] mt-12">
+            <Contact />
+        </div>
     </div>
 </template>
 <script setup>
@@ -76,6 +79,7 @@ import {ref} from "vue";
 import Services from "@/views/main/Services.vue";
 import AboutUs from "@/views/main/AboutUs.vue";
 import Price from "@/views/main/Price.vue";
+import Contact from "@/views/main/Contact.vue";
 
 const toggleLang = ref(false);
 </script>
