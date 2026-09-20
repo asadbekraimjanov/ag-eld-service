@@ -71,7 +71,7 @@
             <text id="usvn_12" class="idaho" transform="matrix(1 0 0 1 135 128)" font-size="14" cursor="pointer">ID</text>
             <text id="usvn_13" class="illinois" transform="matrix(1 0 0 1 433 195)" font-size="14" cursor="pointer">IL</text>
             <text id="usvn_14" class="indiana" transform="matrix(1 0 0 1 466 193)" font-size="14" cursor="pointer">IN</text>
-            <text id="usvn_15" class="iowa" transform="matrix(1 0 0 1 377 165)" font-size="14" cursor="pointer" style="fill: rgb(17, 62, 107);">IA</text>
+            <text id="usvn_15" class="iowa" transform="matrix(1 0 0 1 377 165)" font-size="14" cursor="pointer">IA</text>
             <text id="usvn_16" class="kansas" transform="matrix(1 0 0 1 319 223)" font-size="14" cursor="pointer">KS</text>
             <text id="usvn_17" class="kentucky" transform="matrix(1 0 0 1 489 225)" font-size="14" cursor="pointer">KY</text>
             <text id="usvn_18" class="louisiana" transform="matrix(1 0 0 1 400 347)" font-size="14" cursor="pointer">LA</text>
