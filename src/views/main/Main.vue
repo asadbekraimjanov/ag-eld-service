@@ -65,12 +65,17 @@
         <div class="bg-[#E9ECEF] px-32 py-20">
             <AboutUs />
         </div>
-        <div class="via-gray-50 px-32 py-16">
-            <Price />
+
+        <div class="via-gray-50 px-32 pt-20 py-32">
+            <Comments />
         </div>
 
         <div class="bg-[#E9ECEF] pt-6 pb-10">
             <EldApps />
+        </div>
+
+        <div class="via-gray-50 px-32 py-16">
+            <Price />
         </div>
 
         <div class="relative min-h-[680px] mt-12">
@@ -90,6 +95,7 @@ import AboutUs from "@/views/main/AboutUs.vue";
 import Price from "@/views/main/Price.vue";
 import Contact from "@/views/main/Contact.vue";
 import EldApps from "@/views/main/EldApps.vue";
+import Comments from "@/views/main/Comments.vue";
 
 const toggleLang = ref(false);
 </script>
