@@ -15,7 +15,7 @@
                 class="group overflow-hidden rounded border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
                 <div class="relative  overflow-hidden">
-                    <img :src="service.image" :alt="service.title" class="h-72 w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <img :src="service.image" :alt="service.title" class="h-[40vh] xl:h-[30vh] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                     <div class="absolute inset-0 bg-gradient-to-t from-[#00345b]/75 via-[#00345b]/10 to-transparent"></div>
                     <span class="absolute bottom-5 left-6 text-sm font-semibold tracking-[0.18em] text-white/85">0{{ index + 1 }}</span>
                 </div>

@@ -37,7 +37,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="text-white px-32 pt-60">
+                <div class="text-white px-32 pt-[15%]">
                     <TransitionGroup name="slide-fade" appear>
                         <p key="1" class="text-6xl font-semibold mb-2">It's our pleasure to serve you</p>
                         <p key="2" class="text-[#CFA01A] text-6xl font-normal mb-6">AG ELD SERVICE</p>
@@ -46,11 +46,11 @@
                     </TransitionGroup>
                     <Transition name="slide-btn" appear>
                         <div class="flex gap-10">
-                            <el-button class="!text-xl !border-none !py-7 !px-5 transition-all !duration-500 !bg-[#CFA01A] !text-white hover:scale-[1.08]">
-                                <span>Get Started</span>
-                                <el-icon class="mt-1 ml-4 text-lg"><Right /></el-icon>
+                            <el-button class="!text-base !border-none !py-7 !px-5 transition-all !duration-500 !bg-[#CFA01A] !text-white hover:scale-[1.08]">
+                                <span>Contact Us</span>
+                                <el-icon class="mt-1 ml-4 text-lg"><TopRight /></el-icon>
                             </el-button>
-                            <a href="tel:+998940772200" class="flex items-center gap-2 bg-black font-semibold p-4 rounded cursor-pointer transition-all duration-300 hover:bg-gray-500/50 hover:scale-[1.08]">
+                            <a href="tel:+998940772200" class="flex items-center gap-2 text-base bg-black font-medium p-4 rounded cursor-pointer transition-all duration-300 hover:bg-gray-500/50 hover:scale-[1.08]">
                                 <img src="@/assets/tabler-icons/phone-call.svg" alt="Phone" />
                                 <span>(94) 077 22 00</span>
                             </a>
@@ -68,6 +68,11 @@
         <div class="via-gray-50 px-32 py-16">
             <Price />
         </div>
+
+        <div class="bg-[#E9ECEF] pt-6 pb-10">
+            <EldApps />
+        </div>
+
         <div class="relative min-h-[680px] mt-12">
             <Contact />
         </div>
@@ -78,12 +83,13 @@
     </div>
 </template>
 <script setup>
-import {PhoneFilled, Right, Setting} from "@element-plus/icons-vue";
+import {PhoneFilled, Right, Setting, TopRight} from "@element-plus/icons-vue";
 import {ref} from "vue";
 import Services from "@/views/main/Services.vue";
 import AboutUs from "@/views/main/AboutUs.vue";
 import Price from "@/views/main/Price.vue";
 import Contact from "@/views/main/Contact.vue";
+import EldApps from "@/views/main/EldApps.vue";
 
 const toggleLang = ref(false);
 </script>
