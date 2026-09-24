@@ -1,8 +1,8 @@
 <template>
     <p class="text-center mt-10 text-2xl font-bold text-gray-800">
-        The ELD apps recommended by
-        <span class="text-[#2B69ED]">AG ELD SERVICE</span>
-        are
+        Works with these
+        <span class="text-[#2B69ED]">ELD platforms</span>
+        and supports the platform of your choice
     </p>
 
     <div class="slider-wrapper mt-10">
