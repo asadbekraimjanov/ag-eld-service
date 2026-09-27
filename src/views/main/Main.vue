@@ -12,10 +12,15 @@
                     <div class="flex items-center gap-44 px-32">
                         <img src="/logo.png" class="w-20 opacity-85" alt="">
                         <ul class="flex gap-4 text-white pb-3">
-                            <li class="hover:text-gray-400 cursor-pointer">Services</li>
-                            <li class="hover:text-gray-400 cursor-pointer">About</li>
-                            <li class="hover:text-gray-400 cursor-pointer">Price</li>
-                            <li class="hover:text-gray-400 cursor-pointer">Contact Us</li>
+                            <li @click.prevent="scrollToSection('services')"
+                                class="hover:text-gray-400 cursor-pointer">Services</li>
+                            <li @click.prevent="scrollToSection('about-us')"
+                                class="hover:text-gray-400 cursor-pointer">About</li>
+                            <li @click.prevent="scrollToSection('price')"
+                                class="hover:text-gray-400 cursor-pointer">Price</li>
+                            <li class="hover:text-gray-400 cursor-pointer">Audit</li>
+                            <li @click.prevent="scrollToSection('contact')"
+                                class="hover:text-gray-400 cursor-pointer">Contact Us</li>
                         </ul>
                     </div>
 
@@ -59,10 +64,10 @@
                 </div>
             </div>
         </div>
-        <div class="via-gray-50 px-32 pt-20 py-32 border-t-2 border-gray-800">
+        <div id="services" class="via-gray-50 px-32 pt-20 py-32 border-t-2 border-gray-800">
             <Services />
         </div>
-        <div class="bg-[#E9ECEF] px-32 py-20">
+        <div id="about-us" class="bg-[#E9ECEF] px-32 py-20">
             <AboutUs />
         </div>
 
@@ -74,11 +79,15 @@
             <EldApps />
         </div>
 
-        <div class="via-gray-50 px-32 py-16">
+        <div id="price" class="via-gray-50 px-32 py-16">
             <Price />
         </div>
 
-        <div class="relative min-h-[680px] mt-12">
+        <div>
+            Audit service
+        </div>
+
+        <div id="contact" class="relative min-h-[680px] mt-12">
             <Contact />
         </div>
 
@@ -98,6 +107,17 @@ import EldApps from "@/views/main/EldApps.vue";
 import Comments from "@/views/main/Comments.vue";
 
 const toggleLang = ref(false);
+
+
+const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+        window.scrollTo({
+            top: element.offsetTop,
+            behavior: 'smooth'
+        })
+    }
+}
 </script>
 
 <style scoped>
