@@ -18,7 +18,8 @@
                                 class="hover:text-gray-400 cursor-pointer">About</li>
                             <li @click.prevent="scrollToSection('price')"
                                 class="hover:text-gray-400 cursor-pointer">Price</li>
-                            <li class="hover:text-gray-400 cursor-pointer">Audit</li>
+                            <li @click.prevent="scrollToSection('audit')"
+                                class="hover:text-gray-400 cursor-pointer">Audit</li>
                             <li @click.prevent="scrollToSection('contact')"
                                 class="hover:text-gray-400 cursor-pointer">Contact Us</li>
                         </ul>
@@ -79,19 +80,20 @@
             <EldApps />
         </div>
 
-        <div id="price" class="via-gray-50 px-32 py-16">
+        <div id="price" class="via-gray-50 px-32 pt-16 pb-12">
             <Price />
         </div>
 
-        <div>
-            Audit service
+        <div id="audit" class="via-gray-50 px-32 pb-12">
+            <Audit />
         </div>
 
         <div id="contact" class="relative min-h-[680px] mt-12">
             <Contact />
         </div>
 
-        <div class="w-14 h-14 rounded-full bg-[#CFA01A] text-white fixed font-bold flex items-center justify-center right-10 top-[calc(100vh-5rem)]">
+        <div class="w-14 h-14 shadow-custom cursor-pointer shadow-yellow-600 rounded-full bg-[#CFA01A] text-white
+                    fixed font-bold flex items-center justify-center right-10 top-[calc(100vh-5rem)]">
             <img class="scale-120" src="@/assets/tabler-icons/message-dots.svg" alt="">
         </div>
     </div>
@@ -105,6 +107,7 @@ import Price from "@/views/main/Price.vue";
 import Contact from "@/views/main/Contact.vue";
 import EldApps from "@/views/main/EldApps.vue";
 import Comments from "@/views/main/Comments.vue";
+import Audit from "@/views/main/Audit.vue";
 
 const toggleLang = ref(false);
 
@@ -147,5 +150,10 @@ const scrollToSection = (sectionId) => {
 .slide-btn-leave-to {
     transform: translateY(100px);
     opacity: 0;
+}
+
+.shadow-custom {
+    --tw-shadow: 0 0 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)
 }
 </style>
