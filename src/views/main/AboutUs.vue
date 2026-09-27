@@ -11,22 +11,34 @@
     </div>
     <div class="w-full flex justify-between items-center pt-10">
         <div class="w-[48%] bg-white rounded overflow-hidden shadow">
-            <img src="@/assets/images/safety.jpg" class="w-full h-[45vh] lg:h-[40vh] hover:scale-105 transition-all duration-500" alt="">
+            <div class="relative overflow-hidden group">
+                <img src="@/assets/images/safety.jpg" class="w-full h-[45vh] lg:h-[40vh] object-cover transition-transform duration-500 group-hover:scale-105" alt="">
+
+                <div class="absolute inset-0 bg-gradient-to-t from-[#00345b]/90 via-[#00345b]/20 to-transparent"></div>
+            </div>
             <div class="min-h-[12rem] flex items-start gap-6 p-8">
                 <img src="@/assets/tabler-icons/truck-delivery.svg" class="w-24" alt="">
                 <div>
                     <p class="text-2xl font-medium text-blue-950">SAFETY <span class="font-serif">⚙</span></p>
-                    <p class="text-gray-800 mt-4">Safety Audit is prepared with special experienced guys and until now all of our customers passed Safety Audits successfully.</p>
+                    <p class="text-gray-800 mt-4">
+                        Safety Audit is prepared with special experienced guys and until now all of our customers passed Safety Audits successfully.
+                    </p>
                 </div>
             </div>
         </div>
+
         <div class="w-[48%] bg-white rounded overflow-hidden shadow">
-            <img src="@/assets/images/monitoringgg.jpg" class="w-full h-[45vh] lg:h-[40vh] hover:scale-105 transition-all duration-500" alt="">
+            <div class="relative overflow-hidden group">
+                <img src="@/assets/images/monitoringgg.jpg" class="w-full h-[45vh] lg:h-[40vh] object-cover transition-transform duration-500 group-hover:scale-105" alt="">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#00345b]/90 via-[#00345b]/20 to-transparent"></div>
+            </div>
             <div class="min-h-[12rem] flex items-start gap-6 p-8">
                 <img src="@/assets/tabler-icons/device-desktop-search.svg" class="w-24" alt="">
                 <div>
                     <p class="text-2xl font-medium text-blue-950">MONITORING📈</p>
-                    <p class="text-gray-800 mt-4">We will give you the Monitoring account of your company and you can watch everything there and you can rate our Service Quality.</p>
+                    <p class="text-gray-800 mt-4">
+                        We will give you the Monitoring account of your company and you can watch everything there and you can rate our Service Quality.
+                    </p>
                 </div>
             </div>
         </div>
