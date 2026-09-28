@@ -18,10 +18,15 @@
                                 class="hover:text-gray-400 cursor-pointer">About</li>
                             <li @click.prevent="scrollToSection('price')"
                                 class="hover:text-gray-400 cursor-pointer">Price</li>
-                            <li @click.prevent="scrollToSection('audit')"
-                                class="hover:text-gray-400 cursor-pointer">Audit</li>
                             <li @click.prevent="scrollToSection('contact')"
                                 class="hover:text-gray-400 cursor-pointer">Contact Us</li>
+                            <li @click="router.push({name: 'AuditService'})"
+                                class="hover:text-gray-400 cursor-pointer ml-4">
+                                <div class="flex gap-1 items-center">
+                                    <span>Audit</span>
+                                    <el-icon class="!p-0"><TopRight /></el-icon>
+                                </div>
+                            </li>
                         </ul>
                     </div>
 
@@ -84,13 +89,13 @@
             <Price />
         </div>
 
-        <div id="audit" class="via-gray-50 px-32 pb-12">
-            <Audit />
-        </div>
-
-        <div id="contact" class="relative min-h-[680px] mt-12">
+        <div
+            id="contact"
+            class="relative mt-12 scroll-mt-20"
+        >
             <Contact />
         </div>
+
 
         <div class="w-14 h-14 shadow-custom cursor-pointer shadow-yellow-600 rounded-full bg-[#CFA01A] text-white
                     fixed font-bold flex items-center justify-center right-10 top-[calc(100vh-5rem)]">
@@ -107,7 +112,8 @@ import Price from "@/views/main/Price.vue";
 import Contact from "@/views/main/Contact.vue";
 import EldApps from "@/views/main/EldApps.vue";
 import Comments from "@/views/main/Comments.vue";
-import Audit from "@/views/main/Audit.vue";
+import Audit from "@/views/audit/Audit.vue";
+import router from "@/router/index.js";
 
 const toggleLang = ref(false);
 
