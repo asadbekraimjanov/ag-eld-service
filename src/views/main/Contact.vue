@@ -15,7 +15,7 @@
             </div>
         </div>
     </section>
-    <div class="flex justify-center -translate-y-14">
+    <div class="flex justify-center -translate-y-14 ">
         <div class="w-2/3 bg-[#212529] text-white px-8 py-10 rounded-lg shadow-xl">
             <div class="w-full flex">
                 <div class="w-full">
@@ -66,7 +66,26 @@
                 </div>
             </div>
             <el-divider class="!border-[#adb5bd]/20" />
-            <p class="text-sm text-[#adb5bd]">© Copyright 2026 AG ELD Service</p>
+            <div class="flex justify-between items-center">
+                <p class="text-sm text-[#adb5bd]">© Copyright 2026 AG ELD Service</p>
+                <ul class="flex text-sm gap-4 text-white pb-3">
+                    <li @click.prevent="scrollToSection('services')"
+                        class="hover:text-gray-400 cursor-pointer">Services</li>
+                    <li @click.prevent="scrollToSection('about-us')"
+                        class="hover:text-gray-400 cursor-pointer">About</li>
+                    <li @click.prevent="scrollToSection('price')"
+                        class="hover:text-gray-400 cursor-pointer">Price</li>
+                    <li @click.prevent="scrollToSection('contact')"
+                        class="hover:text-gray-400 cursor-pointer">Contact Us</li>
+                    <li @click="router.push({name: 'AuditService'})"
+                        class="hover:text-gray-400 cursor-pointer ml-4">
+                        <div class="flex gap-1 items-center">
+                            <span>Audit</span>
+                            <el-icon class="!p-0"><TopRight /></el-icon>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </template>
@@ -76,9 +95,20 @@ import MapAmerica from '@/components/MapAmerica.vue'
 import {ref} from "vue";
 import {TopRight} from "@element-plus/icons-vue";
 import PhoneFilled from "@/assets/custom-icons/PhoneFilled.vue";
+import router from "@/router/index.js";
 
 
 const services = ref(['Safety Audit', 'Monitoring', '24/7 ELD Support', 'Consulting Service', 'Profile & Form Corrections', 'Driver Education', 'IFTA Reporting'])
+
+const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+        window.scrollTo({
+            top: element.offsetTop,
+            behavior: 'smooth'
+        })
+    }
+}
 </script>
 
 <style scoped>

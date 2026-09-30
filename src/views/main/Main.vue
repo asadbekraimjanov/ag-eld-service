@@ -89,10 +89,7 @@
             <Price />
         </div>
 
-        <div
-            id="contact"
-            class="relative mt-12 scroll-mt-20"
-        >
+        <div id="contact" class="relative mt-12 scroll-mt-20">
             <Contact />
         </div>
 
@@ -104,7 +101,7 @@
     </div>
 </template>
 <script setup>
-import {PhoneFilled, Right, Setting, TopRight} from "@element-plus/icons-vue";
+import {PhoneFilled, Setting, TopRight} from "@element-plus/icons-vue";
 import {ref} from "vue";
 import Services from "@/views/main/Services.vue";
 import AboutUs from "@/views/main/AboutUs.vue";
@@ -112,7 +109,6 @@ import Price from "@/views/main/Price.vue";
 import Contact from "@/views/main/Contact.vue";
 import EldApps from "@/views/main/EldApps.vue";
 import Comments from "@/views/main/Comments.vue";
-import Audit from "@/views/audit/Audit.vue";
 import router from "@/router/index.js";
 
 const toggleLang = ref(false);
