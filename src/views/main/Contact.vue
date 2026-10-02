@@ -39,27 +39,32 @@
                 </div>
                 <div class="w-full">
                     <p class="text-2xl mb-6">Support</p>
-                    <a href="tel:+998940772200" class="w-max flex items-center gap-3 support">
+                    <a href="tel:+998779669812" class="w-max flex items-center gap-3 support">
                         <p class="w-10 h-10 support-child rounded-full flex justify-center items-end">
                             <PhoneFilled />
                         </p>
-                        <p class="text-sm text-[#adb5bd]">(94) 077 22 00</p>
+                        <p class="text-sm text-[#adb5bd]">(77) 966 98 12</p>
                     </a>
                     <p class="text-2xl my-6">Follow on</p>
                     <div class="w-max flex gap-4">
-                        <a href="tel:+998940772200" class="w-max flex items-center gap-3 support">
-                            <p class="w-10 h-10 support-child rounded-full flex justify-center items-end">
-                                <PhoneFilled />
+                        <a href="https://t.me/USA_truckers_eld_service" target="_blank" class="w-max flex items-center gap-3">
+                            <p class="w-10 h-10 rounded-full flex justify-center items-center border border-gray-500/30 hover:border-white">
+                                <img src="@/assets/tabler-icons/brand-telegram.svg" class="w-[1.2rem]" alt="">
                             </p>
                         </a>
-                        <a href="tel:+998940772200" class="w-max flex items-center gap-3 support">
-                            <p class="w-10 h-10 support-child rounded-full flex justify-center items-end">
-                                <PhoneFilled />
+                        <a href="https://t.me/eld_usa_truckers_owner" target="_blank" class="w-max flex items-center gap-3">
+                            <p class="w-10 h-10 rounded-full flex justify-center items-center border border-gray-500/30 hover:border-white">
+                                <img src="@/assets/tabler-icons/brand-telegram.svg" class="w-[1.2rem]" alt="">
                             </p>
                         </a>
-                        <a href="tel:+998940772200" class="w-max flex items-center gap-3 support">
-                            <p class="w-10 h-10 support-child rounded-full flex justify-center items-end">
-                                <PhoneFilled />
+                        <a href="https://www.facebook.com/share/1bQ3N3mMi2/" target="_blank" class="w-max flex items-center gap-3">
+                            <p class="w-10 h-10 rounded-full flex justify-center items-center border border-gray-500/30 hover:border-white">
+                                <img src="@/assets/tabler-icons/brand-facebook.svg" class="w-[1.2rem]" alt="">
+                            </p>
+                        </a>
+                        <a href="https://www.instagram.com/ag_eld.group?stkn=MTVkbDc1eTg4YmJ1" target="_blank" class="w-max flex items-center gap-3">
+                            <p class="w-10 h-10 rounded-full flex justify-center items-center border border-gray-500/30 hover:border-white">
+                                <img src="@/assets/tabler-icons/brand-instagram.svg" class="w-[1.5rem]" alt="">
                             </p>
                         </a>
                     </div>
@@ -113,6 +118,6 @@ const scrollToSection = (sectionId) => {
 
 <style scoped>
 .support:hover .support-child {
-    border: 1px solid white;
+    border: 1px solid;
 }
 </style>

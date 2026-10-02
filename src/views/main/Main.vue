@@ -32,7 +32,7 @@
 
                     <div class="absolute ml-60 -translate-y-1 right-56 text-white flex items-center gap-2 cursor-pointer">
                         <el-icon><PhoneFilled /></el-icon>
-                        <span>(94) 077 22 00</span>
+                        <span>(77) 966 98 12</span>
                     </div>
 
                     <div @click="toggleLang = !toggleLang"
@@ -57,13 +57,15 @@
                     </TransitionGroup>
                     <Transition name="slide-btn" appear>
                         <div class="flex gap-10">
-                            <el-button class="!text-base !border-none !py-7 !px-5 transition-all !duration-500 !bg-[#CFA01A] !text-white hover:scale-[1.08]">
-                                <span>Contact Us</span>
-                                <el-icon class="mt-1 ml-4 text-lg"><TopRight /></el-icon>
-                            </el-button>
-                            <a href="tel:+998940772200" class="flex items-center gap-2 text-base bg-black font-medium p-4 rounded cursor-pointer transition-all duration-300 hover:bg-gray-500/50 hover:scale-[1.08]">
+                            <a href="https://t.me/ag_eld_service" target="_blank">
+                                <el-button class="!text-base !border-none !py-7 !px-5 transition-all !duration-500 !bg-[#CFA01A] !text-white hover:scale-[1.08]">
+                                    <span>Contact Us</span>
+                                    <el-icon class="mt-1 ml-4 text-lg"><TopRight /></el-icon>
+                                </el-button>
+                            </a>
+                            <a href="tel:+998779669812" class="flex items-center gap-2 text-base bg-black font-medium p-4 rounded cursor-pointer transition-all duration-300 hover:bg-gray-500/50 hover:scale-[1.08]">
                                 <img src="@/assets/tabler-icons/phone-call.svg" alt="Phone" />
-                                <span>(94) 077 22 00</span>
+                                <span>(77) 966 98 12</span>
                             </a>
                         </div>
                     </Transition>
