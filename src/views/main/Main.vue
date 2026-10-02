@@ -96,14 +96,32 @@
         </div>
 
 
-        <div class="w-14 h-14 shadow-custom cursor-pointer shadow-yellow-600 rounded-full bg-[#CFA01A] text-white
-                    fixed font-bold flex items-center justify-center right-10 top-[calc(100vh-5rem)]">
-            <img class="scale-120" src="@/assets/tabler-icons/message-dots.svg" alt="">
+        <div @click.self="toggleChatBot = !toggleChatBot" class="w-14 h-14 shadow-custom shadow-yellow-600 rounded-full bg-[#CFA01A] text-white
+                    fixed font-bold flex items-center justify-center right-10 top-[calc(100vh-5rem)] cursor-pointer !z-50">
+            <div class="relative">
+                <img @click="toggleChatBot = !toggleChatBot" class="scale-120" src="@/assets/tabler-icons/message-dots.svg" alt="">
+                <div v-if="toggleChatBot" class="absolute flex flex-col w-80 max-h-[26rem] min-h-60 bottom-14 -right-4 rounded-xl shadow-xl bg-gray-50 overflow-hidden transition-all duration-700">
+                    <p class="text-white text-sm font-semibold p-4 bg-[#CFA01A]">
+                        CHAT BOT
+                    </p>
+                    <div class="text-black p-4 font-medium text-sm flex-1 overflow-y-auto min-h-0 flex flex-col justify-between gap-4">
+                        <div v-for="msg in messageList" :class="msg.type === 'RECEIVED' ? 'mr-6 rounded-br-lg' : msg.type === 'SEND' ? 'ml-6 rounded-bl-lg !bg-gray-400/30' : ''"
+                             v-html="msg.description" class="p-2 bg-white shadow-sm rounded-tl-lg rounded-tr-lg">
+                        </div>
+                    </div>
+                    <div class="w-full flex justify-between gap-3 p-4 pt-2">
+                        <el-input v-model="inputMessage" placeholder="Write a something.." class="!font-medium !rounded-lg" clearable />
+                        <el-button type="primary" class="!bg-[#CFA01A] !border-none !rounded-lg">
+                            <img src="@/assets/tabler-icons/brand-telegram-black.svg" class="" alt="">
+                        </el-button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 <script setup>
-import {PhoneFilled, Setting, TopRight} from "@element-plus/icons-vue";
+import {Message, PhoneFilled, Setting, TopRight} from "@element-plus/icons-vue";
 import {ref} from "vue";
 import Services from "@/views/main/Services.vue";
 import AboutUs from "@/views/main/AboutUs.vue";
@@ -114,6 +132,19 @@ import Comments from "@/views/main/Comments.vue";
 import router from "@/router/index.js";
 
 const toggleLang = ref(false);
+const toggleChatBot = ref(true)
+const inputMessage = ref(null)
+const messageList = ref([
+    {
+        description: 'Have a <b>quick question?</b> Send us a message.<svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24"' +
+            ' viewBox="0 0 24 24" fill="#00345B" class="icon icon-tabler icons-tabler-filled icon-tabler-message-chatbot inline-block' +
+            ' align-middle ml-1"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 3a4 4 0 0 1 4 4v8a4 4 0 0 1 -4' +
+            ' 4h-4.724l-4.762 2.857a1 1 0 0 1 -1.508 -.743l-.006 -.114v-2h-1a4 4 0 0 1 -3.995 -3.8l-.005 -.2v-8a4 4 0 0 1 4 -4zm-2.8' +
+            ' 9.286a1 1 0 0 0 -1.414 .014a2.5 2.5 0 0 1 -3.572 0a1 1 0 0 0 -1.428 1.4a4.5 4.5 0 0 0 6.428 0a1 1 0 0 0 -.014 -1.414m-5.69' +
+            ' -4.286h-.01a1 1 0 1 0 0 2h.01a1 1 0 0 0 0 -2m5 0h-.01a1 1 0 0 0 0 2h.01a1 1 0 0 0 0 -2" /></svg>',
+        type: 'RECEIVED'
+    }
+])
 
 
 const scrollToSection = (sectionId) => {
@@ -126,8 +157,16 @@ const scrollToSection = (sectionId) => {
     }
 }
 </script>
-
+💌✅❌
 <style scoped>
+:deep(.el-input__wrapper) {
+    background-color: #f9fafb;
+}
+:deep(.el-input__wrapper.is-focus) {
+    background-color: #f9fafb;
+    box-shadow: 0 0 0 1px #9f9f9f inset;
+}
+
 .slide-fade-enter-active {
     transition: all 0.9s ease-out;
 }
