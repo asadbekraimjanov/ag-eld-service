@@ -9,7 +9,7 @@
 
             <div class="relative z-20 py-8">
                 <div class="flex justify-between items-center">
-                    <div class="flex items-center gap-44 px-32">
+                    <div class="flex items-center gap-44 md:px-32">
                         <img src="/logo.png" class="w-20 opacity-85" alt="">
                         <ul class="flex gap-4 text-white pb-3">
                             <li @click.prevent="scrollToSection('services')"
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="text-white px-32 pt-[15%]">
+                <div class="text-white md:px-32 pt-[15%]">
                     <TransitionGroup name="slide-fade" appear>
                         <p key="1" class="text-6xl font-semibold mb-2">It's our pleasure to serve you</p>
                         <p key="2" class="text-[#CFA01A] text-6xl font-normal mb-6">AG ELD SERVICE</p>
@@ -72,14 +72,14 @@
                 </div>
             </div>
         </div>
-        <div id="services" class="via-gray-50 px-32 pt-20 py-32 border-t-2 border-gray-800">
+        <div id="services" class="via-gray-50 md:px-32 pt-20 py-32 border-t-2 border-gray-800">
             <Services />
         </div>
-        <div id="about-us" class="bg-[#E9ECEF] px-32 py-20">
+        <div id="about-us" class="bg-[#E9ECEF] md:px-32 py-20">
             <AboutUs />
         </div>
 
-        <div class="via-gray-50 px-32 pt-20 py-32">
+        <div class="via-gray-50 md:px-32 pt-20 py-32">
             <Comments />
         </div>
 
@@ -87,7 +87,7 @@
             <EldApps />
         </div>
 
-        <div id="price" class="via-gray-50 px-32 pt-16 pb-12">
+        <div id="price" class="via-gray-50 md:px-32 pt-16 pb-12">
             <Price />
         </div>
 
