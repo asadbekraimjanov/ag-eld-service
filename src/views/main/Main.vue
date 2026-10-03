@@ -100,7 +100,7 @@
                     fixed font-bold flex items-center justify-center right-10 top-[calc(100vh-5rem)] cursor-pointer !z-50">
             <div class="relative">
                 <img @click="toggleChatBot = !toggleChatBot" class="scale-120" src="@/assets/tabler-icons/message-dots.svg" alt="">
-                <div v-if="toggleChatBot" class="absolute flex flex-col w-[22rem] max-h-[26rem] min-h-60 bottom-14 -right-4 rounded-xl shadow-xl bg-gray-50 overflow-hidden transition-all duration-700">
+                <div v-if="toggleChatBot" class="absolute flex flex-col w-[22rem] max-h-[26rem] min-h-60 bottom-14 -right-4 rounded-xl shadow-2xl bg-gray-50 overflow-hidden transition-all duration-700">
                     <div class="flex justify-between items-center text-white text-sm font-semibold p-4 bg-[#CFA01A]">
                         <span>CHAT BOT</span>
                         <el-icon @click="toggleChatBot = false" :size="16"><CloseBold class="hover:text-gray-500" /></el-icon>
