@@ -100,20 +100,29 @@
                     fixed font-bold flex items-center justify-center right-10 top-[calc(100vh-5rem)] cursor-pointer !z-50">
             <div class="relative">
                 <img @click="toggleChatBot = !toggleChatBot" class="scale-120" src="@/assets/tabler-icons/message-dots.svg" alt="">
-                <div v-if="toggleChatBot" class="absolute flex flex-col w-80 max-h-[26rem] min-h-60 bottom-14 -right-4 rounded-xl shadow-xl bg-gray-50 overflow-hidden transition-all duration-700">
-                    <p class="text-white text-sm font-semibold p-4 bg-[#CFA01A]">
-                        CHAT BOT
-                    </p>
-                    <div class="text-black p-4 font-medium text-sm flex-1 overflow-y-auto min-h-0 flex flex-col justify-between gap-4">
-                        <div v-for="msg in messageList" :class="msg.type === 'RECEIVED' ? 'mr-6 rounded-br-lg' : msg.type === 'SEND' ? 'ml-6 rounded-bl-lg !bg-gray-400/30' : ''"
-                             v-html="msg.description" class="p-2 bg-white shadow-sm rounded-tl-lg rounded-tr-lg">
-                        </div>
+                <div v-if="toggleChatBot" class="absolute flex flex-col w-[22rem] max-h-[26rem] min-h-60 bottom-14 -right-4 rounded-xl shadow-xl bg-gray-50 overflow-hidden transition-all duration-700">
+                    <div class="flex justify-between items-center text-white text-sm font-semibold p-4 bg-[#CFA01A]">
+                        <span>CHAT BOT</span>
+                        <el-icon @click="toggleChatBot = false" :size="16"><CloseBold class="hover:text-gray-400" /></el-icon>
                     </div>
-                    <div class="w-full flex justify-between gap-3 p-4 pt-2">
-                        <el-input v-model="inputMessage" placeholder="Write a something.." class="!font-medium !rounded-lg" clearable />
-                        <el-button type="primary" class="!bg-[#CFA01A] !border-none !rounded-lg">
+                    <div id="chat-area" class="text-black p-4 font-medium text-sm flex-1 overflow-y-auto min-h-0 flex flex-col justify-between gap-4">
+                        <p v-for="msg in messageList" :class="msg.type === 'RECEIVED' ? 'mr-6 rounded-br-lg' : msg.type === 'SEND' ? 'ml-6 self-end rounded-bl-lg !bg-gray-400/30' : ''"
+                             v-html="msg.description" class="max-w-[80%] p-2 bg-white shadow-sm rounded-tl-lg rounded-tr-lg break-words">
+                        </p>
+                    </div>
+                    <div v-if="clickMessage" class="w-full flex justify-between gap-3 p-4 pt-2">
+                        <el-input @keydown.enter="onMessageSended" v-model="inputMessage" placeholder="Write a something.." class="!font-medium !rounded-lg" clearable />
+                        <el-button @click="onMessageSended" type="primary" class="!bg-[#CFA01A] !border-none !rounded-lg">
                             <img src="@/assets/tabler-icons/brand-telegram-black.svg" class="" alt="">
                         </el-button>
+                    </div>
+                    <div v-else class="w-full flex justify-between gap-3 p-4 pt-2">
+                        <p @click="onClickTgButton" class="text-[#CFA01A] w-full text whitespace-nowrap text-center text-sm font-medium bg-white
+                                border border-[#CFA01A] py-2 hover:bg-[#CFA01A] hover:text-white rounded-2xl">Telegram</p>
+                        <p @click="onClickInstButton" class="text-[#CFA01A] w-full text whitespace-nowrap text-center text-sm font-medium bg-white
+                                border border-[#CFA01A] py-2 hover:bg-[#CFA01A] hover:text-white rounded-2xl">Instagram</p>
+                        <p @click="onClickMsgButton" class="text-[#CFA01A] w-full text whitespace-nowrap text-center text-sm font-medium bg-white
+                                border border-[#CFA01A] py-2 hover:bg-[#CFA01A] hover:text-white rounded-2xl">Message</p>
                     </div>
                 </div>
             </div>
@@ -121,8 +130,8 @@
     </div>
 </template>
 <script setup>
-import {Message, PhoneFilled, Setting, TopRight} from "@element-plus/icons-vue";
-import {ref} from "vue";
+import {CloseBold, Message, PhoneFilled, Setting, TopRight} from "@element-plus/icons-vue";
+import {nextTick, ref} from "vue";
 import Services from "@/views/main/Services.vue";
 import AboutUs from "@/views/main/AboutUs.vue";
 import Price from "@/views/main/Price.vue";
@@ -133,19 +142,118 @@ import router from "@/router/index.js";
 
 const toggleLang = ref(false);
 const toggleChatBot = ref(true)
+const clickMessage = ref(false)
 const inputMessage = ref(null)
 const messageList = ref([
     {
-        description: 'Have a <b>quick question?</b> Send us a message.<svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24"' +
-            ' viewBox="0 0 24 24" fill="#00345B" class="icon icon-tabler icons-tabler-filled icon-tabler-message-chatbot inline-block' +
-            ' align-middle ml-1"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 3a4 4 0 0 1 4 4v8a4 4 0 0 1 -4' +
-            ' 4h-4.724l-4.762 2.857a1 1 0 0 1 -1.508 -.743l-.006 -.114v-2h-1a4 4 0 0 1 -3.995 -3.8l-.005 -.2v-8a4 4 0 0 1 4 -4zm-2.8' +
-            ' 9.286a1 1 0 0 0 -1.414 .014a2.5 2.5 0 0 1 -3.572 0a1 1 0 0 0 -1.428 1.4a4.5 4.5 0 0 0 6.428 0a1 1 0 0 0 -.014 -1.414m-5.69' +
-            ' -4.286h-.01a1 1 0 1 0 0 2h.01a1 1 0 0 0 0 -2m5 0h-.01a1 1 0 0 0 0 2h.01a1 1 0 0 0 0 -2" /></svg>',
+        description: 'Hey there! 👋 Welcome to ELD Service. Choose an option below or send us a message.',
         type: 'RECEIVED'
     }
 ])
 
+
+const onClickTgButton = async () => {
+    messageList.value.push(
+        {
+            description: 'Telegram',
+            type: 'SEND'
+        },
+        {
+            description: 'You can reach us on Telegram at <a href="https://t.me/ag_eld_service" target="_blank"' +
+                ' class="text-blue-500 hover:underline">@ag_eld_service.</a> We’ll be happy to assist you! 😊',
+            type: 'RECEIVED'
+        }
+    )
+
+    await nextTick()
+
+    const chat = document.getElementById('chat-area')
+
+    chat.scrollTo({
+        top: chat.scrollHeight,
+        behavior: 'smooth'
+    })
+}
+
+const onClickInstButton = async () => {
+    messageList.value.push(
+        {
+            description: 'Instagram',
+            type: 'SEND'
+        },
+        {
+            description: 'You can also connect with us on Instagram: 👉 <a href="https://www.instagram.com/ag_eld.group?stkn=MTVkbDc1eTg4YmJ1"' +
+                ' target="_blank" class="text-blue-500 hover:underline">Visit our Instagram</a> Feel free to reach out — we’re happy to help! 😊',
+            type: 'RECEIVED'
+        }
+    )
+
+    await nextTick()
+
+    const chat = document.getElementById('chat-area')
+
+    chat.scrollTo({
+        top: chat.scrollHeight,
+        behavior: 'smooth'
+    })
+}
+
+const onClickMsgButton = async () => {
+    clickMessage.value = true
+    messageList.value.push(
+        {
+            description: 'Send message',
+            type: 'SEND'
+        },
+        {
+            description: 'Have a <b>quick question?</b> Send us a message.<svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24"' +
+                ' viewBox="0 0 24 24" fill="#00345B" class="icon icon-tabler icons-tabler-filled icon-tabler-message-chatbot inline-block' +
+                ' align-middle ml-1"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 3a4 4 0 0 1 4 4v8a4 4 0 0 1 -4' +
+                ' 4h-4.724l-4.762 2.857a1 1 0 0 1 -1.508 -.743l-.006 -.114v-2h-1a4 4 0 0 1 -3.995 -3.8l-.005 -.2v-8a4 4 0 0 1 4 -4zm-2.8' +
+                ' 9.286a1 1 0 0 0 -1.414 .014a2.5 2.5 0 0 1 -3.572 0a1 1 0 0 0 -1.428 1.4a4.5 4.5 0 0 0 6.428 0a1 1 0 0 0 -.014 -1.414m-5.69' +
+                ' -4.286h-.01a1 1 0 1 0 0 2h.01a1 1 0 0 0 0 -2m5 0h-.01a1 1 0 0 0 0 2h.01a1 1 0 0 0 0 -2" /></svg>',
+            type: 'RECEIVED'
+        },
+        {
+            description: 'Please leave your preferred contact details at the end of your message so we can get in touch with you.😊',
+            type: 'RECEIVED'
+        }
+    )
+
+    await nextTick()
+
+    const chat = document.getElementById('chat-area')
+
+    chat.scrollTo({
+        top: chat.scrollHeight,
+        behavior: 'smooth'
+    })
+}
+
+const onMessageSended = async () => {
+    if (inputMessage.value) {
+        messageList.value.push(
+            {
+                description: inputMessage.value,
+                type: 'SEND'
+            },
+            {
+                description: 'We’ve received your message ✅ We’ll get back to you shortly through the contact details you provided. 😊 Thank you for reaching out!',
+                type: 'RECEIVED'
+            }
+        )
+        inputMessage.value = ''
+    }
+
+    await nextTick()
+
+    const chat = document.getElementById('chat-area')
+
+    chat.scrollTo({
+        top: chat.scrollHeight,
+        behavior: 'smooth'
+    })
+}
 
 const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
