@@ -24,16 +24,16 @@
                 </div>
                 <div class="w-full">
                     <p class="text-2xl mb-6">Contact Us</p>
-                    <a href="" class="w-max flex items-center gap-2 text-sm text-[#adb5bd] mb-3 hover:text-white font-medium border-b border-transparent hover:border-white pb-1">
+                    <a href="https://t.me/ag_eld_service" target="_blank" class="w-max flex items-center gap-2 text-sm text-[#adb5bd] mb-3 hover:text-white font-medium border-b border-transparent hover:border-white pb-1">
                         <span>Telegram</span>
                     </a>
-                    <a href="" class="w-max flex items-center gap-2 text-sm text-[#adb5bd] mb-3 hover:text-white font-medium border-b border-transparent hover:border-white pb-1">
+                    <a href="https://www.instagram.com/ag_eld.group?stkn=MTVkbDc1eTg4YmJ1" target="_blank" class="w-max flex items-center gap-2 text-sm text-[#adb5bd] mb-3 hover:text-white font-medium border-b border-transparent hover:border-white pb-1">
                         <span>Instagram</span>
                     </a>
-                    <a href="" class="w-max flex items-center gap-2 text-sm text-[#adb5bd] mb-3 hover:text-white font-medium border-b border-transparent hover:border-white pb-1">
+                    <a href="https://wa.me/998940772200" target="_blank" class="w-max flex items-center gap-2 text-sm text-[#adb5bd] mb-3 hover:text-white font-medium border-b border-transparent hover:border-white pb-1">
                         <span>Whats App</span>
                     </a>
-                    <a href="" class="w-max flex items-center gap-2 text-sm text-[#adb5bd] mb-3 hover:text-white font-medium border-b border-transparent hover:border-white pb-1">
+                    <a href="https://www.facebook.com/share/1bQ3N3mMi2/" target="_blank" class="w-max flex items-center gap-2 text-sm text-[#adb5bd] mb-3 hover:text-white font-medium border-b border-transparent hover:border-white pb-1">
                         <span>Facebook</span>
                     </a>
                 </div>

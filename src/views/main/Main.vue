@@ -103,7 +103,7 @@
                 <div v-if="toggleChatBot" class="absolute flex flex-col w-[22rem] max-h-[26rem] min-h-60 bottom-14 -right-4 rounded-xl shadow-xl bg-gray-50 overflow-hidden transition-all duration-700">
                     <div class="flex justify-between items-center text-white text-sm font-semibold p-4 bg-[#CFA01A]">
                         <span>CHAT BOT</span>
-                        <el-icon @click="toggleChatBot = false" :size="16"><CloseBold class="hover:text-gray-400" /></el-icon>
+                        <el-icon @click="toggleChatBot = false" :size="16"><CloseBold class="hover:text-gray-500" /></el-icon>
                     </div>
                     <div id="chat-area" class="text-black p-4 font-medium text-sm flex-1 overflow-y-auto min-h-0 flex flex-col justify-between gap-4">
                         <p v-for="msg in messageList" :class="msg.type === 'RECEIVED' ? 'mr-6 rounded-br-lg' : msg.type === 'SEND' ? 'ml-6 self-end rounded-bl-lg !bg-gray-400/30' : ''"
