@@ -215,7 +215,7 @@ const onClickMsgButton = async () => {
             type: 'RECEIVED'
         },
         {
-            description: 'Please leave your preferred contact details at the end of your message so we can get in touch with you.😊',
+            description: 'Please leave your preferred contact details at the end of your message so we can get in touch with you. 😊',
             type: 'RECEIVED'
         }
     )
@@ -238,7 +238,7 @@ const onMessageSended = async () => {
                 type: 'SEND'
             },
             {
-                description: 'We’ve received your message ✅ We’ll get back to you shortly through the contact details you provided. 😊 Thank you for reaching out!',
+                description: 'We’ve received your message 💌 We’ll get back to you shortly through the contact details you provided. ✅ Thank you for reaching out! 😊',
                 type: 'RECEIVED'
             }
         )
