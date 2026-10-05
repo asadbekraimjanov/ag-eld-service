@@ -1,29 +1,17 @@
 <template>
-    <div
-        class="min-h-[100vh] w-full bg-gray-300 px-4 py-5 text-[#f3f1ea] sm:px-8 sm:py-10"
-    >
+    <div class="min-h-[100vh] w-full bg-gray-300 px-4 py-5 text-[#f3f1ea] sm:px-8 sm:py-10">
         <div class="mx-auto max-w-[1040px]">
-            <!-- Header -->
             <span
-                class="mb-[18px] inline-flex items-center gap-2 rounded-full border border-[#dba53f]/35 bg-[#dba53f]/10 px-3 py-1.5 text-xs uppercase tracking-[.16em] text-[#dba53f]"
-            >
-        <span
-            class="h-1.5 w-1.5 rounded-full bg-[#dba53f] shadow-[0_0_0_3px_rgba(219,165,63,.25)]"
-        />
-        Free Tool
-      </span>
-
-            <h1
-                class="mb-3 max-w-3xl text-3xl font-semibold leading-[1.08] sm:text-[42px] text-gray-800"
-            >
+                class="mb-[18px] inline-flex items-center gap-2 rounded-full border border-[#dba53f]/35 bg-[#dba53f]/10 px-3 py-1.5 text-xs uppercase tracking-[.16em] text-[#dba53f]">
+            <span class="h-1.5 w-1.5 rounded-full bg-[#dba53f] shadow-[0_0_0_3px_rgba(219,165,63,.25)]"/>
+                Free Tool
+            </span>
+            <h1 class="mb-3 max-w-3xl text-3xl font-semibold leading-[1.08] sm:text-[42px] text-gray-800">
                 How audit-ready is
                 <span class="text-[#dba53f]">your fleet</span>,
                 right now?
             </h1>
-
-            <p
-                class="mb-9 max-w-[600px] text-base leading-[1.6] text-[#8b93a3]"
-            >
+            <p class="mb-9 max-w-[600px] text-base leading-[1.6] text-[#8b93a3]">
                 Answer four questions about your operation. We'll estimate your
                 compliance risk the same way our Safety Audit team does on day one —
                 before you spend a dollar on a full review.
@@ -31,104 +19,42 @@
 
             <div class="grid gap-5 md:grid-cols-[1.05fr_.95fr]">
                 <!-- FORM -->
-                <div
-                    class="rounded-[14px] border border-[#2a3242] bg-[#161c26] p-5 sm:p-8"
-                >
+                <div class="rounded-[14px] border border-[#2a3242] bg-[#161c26] p-5 sm:p-8">
                     <!-- Fleet size -->
                     <div class="mb-[22px]">
                         <div class="mb-2.5 flex items-baseline justify-between">
-                            <label
-                                for="fleetSize"
-                                class="text-[13.5px] font-semibold"
-                            >
-                                Fleet size
-                            </label>
-
-                            <span
-                                class="text-[15px] text-[#dba53f]"
-                            >
-                {{ fleetSize }}
-                {{ fleetSize === 1 ? 'truck' : 'trucks' }}
-              </span>
+                            <label for="fleetSize" class="text-[13.5px] font-semibold">Fleet size</label>
+                            <span class="text-[15px] text-[#dba53f]">
+                                {{ fleetSize }}
+                                {{ fleetSize === 1 ? 'truck' : 'trucks' }}
+                            </span>
                         </div>
 
-                        <input
-                            id="fleetSize"
-                            v-model.number="fleetSize"
-                            type="range"
-                            min="1"
-                            max="150"
-                            step="1"
-                            class="range-input"
-                        />
-
-                        <p class="mt-1.5 text-xs text-[#5b6474]">
-                            Number of trucks currently active on your DOT number
-                        </p>
+                        <input id="fleetSize" v-model.number="fleetSize" type="range" min="1" max="150" step="1" class="range-input" />
+                        <p class="mt-1.5 text-xs text-[#5b6474]">Number of trucks currently active on your DOT number</p>
                     </div>
 
                     <!-- Violations -->
                     <div class="mb-[22px]">
                         <div class="mb-2.5 flex items-baseline justify-between">
-                            <label
-                                for="violations"
-                                class="text-[13.5px] font-semibold"
-                            >
+                            <label for="violations" class="text-[13.5px] font-semibold">
                                 HOS / ELD violations, last 12 months
                             </label>
-
-                            <span
-                                class="text-[15px] text-[#dba53f]"
-                            >
-                {{ violations }}
-              </span>
+                            <span class="text-[15px] text-[#dba53f]">{{ violations }}</span>
                         </div>
-
-                        <input
-                            id="violations"
-                            v-model.number="violations"
-                            type="range"
-                            min="0"
-                            max="20"
-                            step="1"
-                            class="range-input"
-                        />
-
-                        <p class="mt-1.5 text-xs text-[#5b6474]">
-                            Include logbook edits flagged in roadside inspections
-                        </p>
+                        <input id="violations" v-model.number="violations" type="range" min="0" max="20" step="1" class="range-input"/>
+                        <p class="mt-1.5 text-xs text-[#5b6474]">Include logbook edits flagged in roadside inspections</p>
                     </div>
 
                     <!-- Audit -->
                     <div class="mb-[22px]">
                         <div class="mb-2.5 flex items-baseline justify-between">
-                            <label
-                                for="audit"
-                                class="text-[13.5px] font-semibold"
-                            >
-                                Months since last safety audit
-                            </label>
-
-                            <span
-                                class="text-[15px] text-[#dba53f]"
-                            >
-                {{ audit }} mo
-              </span>
+                            <label for="audit" class="text-[13.5px] font-semibold">Months since last safety audit</label>
+                            <span class="text-[15px] text-[#dba53f]">{{ audit }} mo</span>
                         </div>
+                        <input id="audit" v-model.number="audit" type="range" min="0" max="36" step="1" class="range-input"/>
 
-                        <input
-                            id="audit"
-                            v-model.number="audit"
-                            type="range"
-                            min="0"
-                            max="36"
-                            step="1"
-                            class="range-input"
-                        />
-
-                        <p class="mt-1.5 text-xs text-[#5b6474]">
-                            Internal review or FMCSA compliance review — whichever was last
-                        </p>
+                        <p class="mt-1.5 text-xs text-[#5b6474]">Internal review or FMCSA compliance review — whichever was last</p>
                     </div>
 
                     <!-- ELD -->
@@ -152,7 +78,7 @@
                 "
                                 @click="eldVal = option.value"
                             >
-                                <span v-html="option.label" />
+                                <span v-html="option.label"/>
                             </button>
                         </div>
 
@@ -166,11 +92,11 @@
                 <div
                     class="flex flex-col items-center overflow-hidden rounded-[14px] border border-[#2a3242] bg-[#161c26] p-5 text-center sm:p-8"
                 >
-          <span
-              class="mb-1.5 text-xs uppercase tracking-[.14em] text-[#5b6474]"
-          >
-            Compliance Risk Score
-          </span>
+                <span
+                    class="mb-1.5 text-xs uppercase tracking-[.14em] text-[#5b6474]"
+                    >
+                    Compliance Risk Score
+                </span>
 
                     <!-- Gauge -->
                     <svg
@@ -276,7 +202,7 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import {computed, ref} from 'vue'
 
 const fleetSize = ref(12)
 const violations = ref(2)
@@ -423,9 +349,8 @@ function handleCta() {
     fill: none;
     stroke-width: 14;
     stroke-linecap: round;
-    transition:
-        stroke 0.3s ease,
-        stroke-dashoffset 0.3s ease;
+    transition: stroke 0.3s ease,
+    stroke-dashoffset 0.3s ease;
 }
 
 .needle {

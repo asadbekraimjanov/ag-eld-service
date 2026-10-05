@@ -112,8 +112,8 @@
                     </div>
                     <div v-if="clickMessage" class="w-full flex justify-between gap-3 p-4 pt-2">
                         <el-input @keydown.enter="onMessageSended" v-model="inputMessage" placeholder="Write a something.." class="!font-medium !rounded-lg" clearable />
-                        <el-button @click="onMessageSended" type="primary" class="!bg-[#CFA01A] !border-none !rounded-lg">
-                            <img src="@/assets/tabler-icons/brand-telegram-black.svg" class="" alt="">
+                        <el-button @click="onMessageSended" type="primary" :loading="loadingSendBtn" class="!bg-[#CFA01A] !border-none !rounded-lg">
+                            <img v-if="!loadingSendBtn" src="@/assets/tabler-icons/brand-telegram-black.svg" class="" alt="">
                         </el-button>
                     </div>
                     <div v-else class="w-full flex justify-between gap-3 p-4 pt-2">
@@ -139,11 +139,13 @@ import Contact from "@/views/main/Contact.vue";
 import EldApps from "@/views/main/EldApps.vue";
 import Comments from "@/views/main/Comments.vue";
 import router from "@/router/index.js";
+import * as emailjs from "@emailjs/browser";
 
 const toggleLang = ref(false);
 const toggleChatBot = ref(true)
 const clickMessage = ref(false)
 const inputMessage = ref(null)
+const loadingSendBtn = ref(false)
 const messageList = ref([
     {
         description: 'Hey there! 👋 Welcome to ELD Service. Choose an option below or send us a message.',
@@ -232,16 +234,50 @@ const onClickMsgButton = async () => {
 
 const onMessageSended = async () => {
     if (inputMessage.value) {
-        messageList.value.push(
-            {
-                description: inputMessage.value,
-                type: 'SEND'
-            },
-            {
-                description: 'We’ve received your message 💌 We’ll get back to you shortly through the contact details you provided. ✅ Thank you for reaching out! 😊',
-                type: 'RECEIVED'
-            }
-        )
+
+        loadingSendBtn.value = true
+
+        try {
+            await emailjs.send(
+                'service_ohry5di',
+                'template_jctdt1b',
+                {
+                    from_name: 'AG CHAT BOT',
+                    from_email: 'ag.eldservice2022@gmail.com',
+                    message: inputMessage.value
+                },
+                {
+                    publicKey: 'gX6V9J-uMKcK-PuOH'
+                }
+            )
+
+            messageList.value.push(
+                {
+                    description: inputMessage.value,
+                    type: 'SEND'
+                },
+                {
+                    description: 'We’ve received your message 💌 We’ll get back to you shortly through the contact details you provided. ✅ Thank you for reaching out! 😊',
+                    type: 'RECEIVED'
+                }
+            )
+
+        } catch (error) {
+            console.error(error.message)
+            messageList.value.push(
+                {
+                    description: inputMessage.value,
+                    type: 'SEND'
+                },
+                {
+                    description: 'Oops! Something went wrong. Please try again later. ⏱️',
+                    type: 'RECEIVED'
+                }
+            )
+        } finally {
+            loadingSendBtn.value = false
+        }
+
         inputMessage.value = ''
     }
 
