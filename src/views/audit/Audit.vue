@@ -89,108 +89,39 @@
                 </div>
 
                 <!-- RESULT -->
-                <div
-                    class="flex flex-col items-center overflow-hidden rounded-[14px] border border-[#2a3242] bg-[#161c26] p-5 text-center sm:p-8"
-                >
-                <span
-                    class="mb-1.5 text-xs uppercase tracking-[.14em] text-[#5b6474]"
-                    >
-                    Compliance Risk Score
-                </span>
-
+                <div class="flex flex-col items-center overflow-hidden rounded-[14px] border border-[#2a3242] bg-[#161c26] p-5 text-center sm:p-8">
+                    <span class="mb-1.5 text-xs uppercase tracking-[.14em] text-[#5b6474]">Compliance Risk Score</span>
                     <!-- Gauge -->
-                    <svg
-                        class="gauge"
-                        viewBox="0 0 280 160"
-                    >
-                        <path
-                            class="fill-none stroke-[#1e2532] stroke-[14]"
-                            d="M 20 140 A 120 120 0 0 1 260 140"
-                        />
-
-                        <path
-                            class="gauge-fill"
-                            d="M 20 140 A 120 120 0 0 1 260 140"
-                            :stroke="riskColor"
-                            :stroke-dasharray="ARC_LEN"
-                            :stroke-dashoffset="gaugeOffset"
-                        />
-
-                        <g
-                            class="needle"
-                            :style="{ transform: `rotate(${needleAngle}deg)` }"
-                        >
-                            <line
-                                x1="140"
-                                y1="140"
-                                x2="140"
-                                y2="42"
-                                stroke="#f3f1ea"
-                                stroke-width="4"
-                                stroke-linecap="round"
-                            />
-
-                            <circle
-                                cx="140"
-                                cy="140"
-                                r="9"
-                                fill="#f3f1ea"
-                            />
+                    <svg class="gauge" viewBox="0 0 280 160">
+                        <path class="fill-none stroke-[#1e2532] stroke-[14]" d="M 20 140 A 120 120 0 0 1 260 140"/>
+                        <path class="gauge-fill" d="M 20 140 A 120 120 0 0 1 260 140" :stroke="riskColor" :stroke-dasharray="ARC_LEN" :stroke-dashoffset="gaugeOffset"/>
+                        <g class="needle" :style="{ transform: `rotate(${needleAngle}deg)` }">
+                            <line x1="140" y1="140" x2="140" y2="42" stroke="#f3f1ea" stroke-width="4" stroke-linecap="round"/>
+                            <circle cx="140" cy="140" r="9" fill="#f3f1ea"/>
                         </g>
                     </svg>
-
                     <!-- Score -->
-                    <div
-                        class="-mt-16 text-[44px] font-bold tracking-[.01em]"
-                    >
+                    <div class="-mt-16 text-[44px] font-bold tracking-[.01em]">
                         {{ score }}
-
-                        <span
-                            class="text-lg font-medium text-[#8b93a3]"
-                        >
-              /100
-            </span>
+                        <span class="text-lg font-medium text-[#8b93a3]"> /100</span>
                     </div>
-
                     <!-- Risk -->
-                    <div
-                        class="my-2.5 rounded-full px-4 py-1.5 text-[13px] uppercase tracking-[.1em]"
-                        :style="riskTagStyle"
-                    >
+                    <div class="my-2.5 rounded-full px-4 py-1.5 text-[13px] uppercase tracking-[.1em]" :style="riskTagStyle">
                         {{ riskTag }}
                     </div>
-
                     <!-- Recommendation -->
-                    <div
-                        class="mt-1 w-full border-t border-[#2a3242] pt-[18px] text-left"
-                    >
-                        <p
-                            class="mb-3.5 text-[13.5px] leading-[1.55] text-[#8b93a3]"
-                        >
-                            {{ recommendation }}
-                        </p>
-
+                    <div class="mt-1 w-full border-t border-[#2a3242] pt-[18px] text-left">
+                        <p class="mb-3.5 text-[13.5px] leading-[1.55] text-[#8b93a3]">{{ recommendation }}</p>
                         <div class="mb-5 flex flex-wrap gap-2">
-              <span
-                  v-for="chip in currentBand.chips"
-                  :key="chip"
-                  class="rounded-[7px] border border-[#2a3242] bg-[#1e2532] px-[11px] py-1.5 text-xs font-semibold text-[#f3f1ea]"
-              >
-                {{ chip }}
-              </span>
+                            <span v-for="chip in currentBand.chips" :key="chip" class="rounded-[7px] border border-[#2a3242]
+                                    bg-[#1e2532] px-[11px] py-1.5 text-xs font-semibold text-[#f3f1ea]">{{ chip }}</span>
                         </div>
 
-                        <button
-                            type="button"
-                            class="w-full rounded-[9px] bg-[#dba53f] px-[18px] py-3.5 text-[14.5px] font-semibold uppercase tracking-[.03em] text-[#14100a] transition hover:brightness-110 active:translate-y-px"
-                            @click="handleCta"
-                        >
+                        <button @click="handleCta" type="button" class="w-full rounded-[9px] bg-[#dba53f] px-[18px] py-3.5
+                                text-[14.5px] font-semibold uppercase tracking-[.03em] text-[#14100a] transition hover:brightness-110 active:translate-y-px">
                             {{ ctaText }}
                         </button>
-
-                        <p
-                            class="mt-3.5 text-[11px] leading-[1.5] text-[#5b6474]"
-                        >
+                        <p class="mt-3.5 text-[11px] leading-[1.5] text-[#5b6474]">
                             Estimate only, based on the details above — not an official FMCSA
                             rating. A full Safety Audit gives you the exact picture.
                         </p>
