@@ -41,7 +41,7 @@
                     </el-col>
                     <el-col :span="12">
                         <el-form-item prop="eldName" label="Service name">
-                            <el-input v-model="form.eldName" placeholder="e.g. Sun ELD" clearable />
+                            <el-input v-model="form.eldName" placeholder="Your Service name" clearable />
                         </el-form-item>
                     </el-col>
                 </el-row>
