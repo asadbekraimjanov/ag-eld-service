@@ -26,7 +26,7 @@
                                     <span>Audit</span>
                                     <el-icon class="!p-0"><TopRight /></el-icon>
                                 </div>
-                            </li>O'z prok 25 yil,  Oz res mustaqilligining 25 yilligi, oz res konstitutsiyasiga 30 yil
+                            </li>
                         </ul>
                     </div>
 
