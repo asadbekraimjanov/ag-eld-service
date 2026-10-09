@@ -3,7 +3,7 @@
         <div class="relative min-h-screen shadow-lg">
             <div class="absolute inset-0 z-0">
 <!--                <img class="absolute w-full h-full object-cover" src="@/assets/images/main2.jpg" alt="">-->
-                <video class="absolute w-full h-full object-cover" src="/new2.mp4" autoplay muted loop></video>
+                <video class="absolute w-full h-full object-cover" src="/main.MP4" autoplay muted loop></video>
                 <div class="absolute inset-0 bg-black/70"></div>
             </div>
 
@@ -26,7 +26,7 @@
                                     <span>Audit</span>
                                     <el-icon class="!p-0"><TopRight /></el-icon>
                                 </div>
-                            </li>
+                            </li>O'z prok 25 yil,  Oz res mustaqilligining 25 yilligi, oz res konstitutsiyasiga 30 yil
                         </ul>
                     </div>
 
