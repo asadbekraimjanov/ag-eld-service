@@ -26,7 +26,7 @@
                     </el-col>
                     <el-col :span="12">
                         <el-form-item prop="eldVal" label="ELD setup">
-                            <el-select v-model="form.eldVal" placeholder="Select" disabled>
+                            <el-select @change="onScoreChanged" v-model="form.eldVal" placeholder="Select">
                                 <el-option label="New < 1 year" :value="0" />
                                 <el-option label="1–3 years" :value="8" />
                                 <el-option label="3+ years" :value="20" />
@@ -38,19 +38,19 @@
                 <el-row :gutter="20">
                     <el-col :span="12">
                         <el-form-item prop="fleetSize" label="Fleet Size (trucks)">
-                            <el-slider v-model="form.fleetSize" :min="1" :max="150" show-input disabled />
+                            <el-slider @change="onScoreChanged" v-model="form.fleetSize" :min="1" :max="150" show-input />
                         </el-form-item>
                     </el-col>
                     <el-col :span="12">
                         <el-form-item prop="violations" label="HOS / ELD violations, last 12 months">
-                            <el-slider v-model="form.violations" :min="0" :max="20" show-input disabled />
+                            <el-slider @change="onScoreChanged" v-model="form.violations" :min="0" :max="20" show-input />
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row :gutter="20">
                     <el-col :span="12">
                         <el-form-item prop="audit" label="Months since last safety audit (mo)">
-                            <el-slider v-model="form.audit" :min="0" :max="36" show-input disabled />
+                            <el-slider @change="onScoreChanged" v-model="form.audit" :min="0" :max="36" show-input />
                         </el-form-item>
                     </el-col>
                     <el-col :span="12">
@@ -123,6 +123,28 @@ const sliderColor = computed(() => {
     if (score < 31) return '#02A76F'
     if (score < 61) return '#CFA01A'
     return '#F56C6C'
+})
+
+const onScoreChanged = () => {
+    form.value.score = calculatedScore
+}
+
+const calculatedScore = computed(() => {
+    let result = 0
+
+    result += Math.min(form.value.violations * 7, 42)
+
+    if (form.value.audit >= 12) {
+        result += 22
+    } else if (form.value.audit >= 6) {
+        result += 12
+    } else if (form.value.audit >= 3) {
+        result += 5
+    }
+
+    result += form.value.eldVal ?? 0
+
+    return Math.max(2, Math.min(100, Math.round(result)))
 })
 
 const submit = async () => {
