@@ -1,5 +1,5 @@
 <template>
-    <div class="relative isolate min-h-screen w-full bg-transparent px-4 py-5 text-[#f3f1ea] sm:px-8 sm:py-10">
+    <div class="relative isolate min-h-screen w-full bg-[#22354E] px-4 py-5 text-[#f3f1ea] sm:px-8 sm:py-10">
         <img src="@/assets/images/Dark_corporate_tech_background_2K_20261012111959.jpg" class="absolute inset-0 -z-10 h-full w-full object-cover" alt="">
 <!--        <div class="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(8,17,31,.68)_0%,rgba(8,17,31,.58)_55%,rgba(8,13,22,.82)_100%)]"></div>-->
 
