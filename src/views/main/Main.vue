@@ -2,7 +2,6 @@
     <div class="relative">
         <div class="relative min-h-screen shadow-lg">
             <div class="absolute inset-0 z-0">
-<!--                <img class="absolute w-full h-full object-cover" src="@/assets/images/main2.jpg" alt="">-->
                 <video class="absolute w-full h-full object-cover" src="/main.MP4" playsinline preload="auto"
                        poster="@/assets/images/main-image.jpg" autoplay muted loop></video>
                 <div class="absolute inset-0 bg-black/70"></div>
