@@ -1,8 +1,8 @@
 import { createI18n } from 'vue-i18n'
 
-import en from '@/i18n/languages/en.json'
-import uz from '@/i18n/languages/uz.json'
-import ru from '@/i18n/languages/ru.json'
+import en from '@/I18n/languages/en.json'
+import uz from '@/I18n/languages/uz.json'
+import ru from '@/I18n/languages/ru.json'
 
 const savedLocale = localStorage.getItem('locale')
 
