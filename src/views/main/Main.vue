@@ -14,17 +14,17 @@
                         <img src="/logo.png" class="w-20 opacity-85" alt="">
                         <ul class="flex gap-4 text-white pb-3">
                             <li @click.prevent="scrollToSection('services')"
-                                class="hover:text-gray-400 cursor-pointer">Services</li>
+                                class="hover:text-gray-400 cursor-pointer">{{ $t('services') }}</li>
                             <li @click.prevent="scrollToSection('about-us')"
-                                class="hover:text-gray-400 cursor-pointer">About</li>
+                                class="hover:text-gray-400 cursor-pointer">{{ $t('about') }}</li>
                             <li @click.prevent="scrollToSection('price')"
-                                class="hover:text-gray-400 cursor-pointer">Price</li>
+                                class="hover:text-gray-400 cursor-pointer">{{ $t('price') }}</li>
                             <li @click.prevent="scrollToSection('contact')"
-                                class="hover:text-gray-400 cursor-pointer">Contact Us</li>
+                                class="hover:text-gray-400 cursor-pointer">{{ $t('contactUs') }}</li>
                             <li @click="router.push({name: 'AuditService'})"
                                 class="hover:text-gray-400 cursor-pointer ml-4">
                                 <div class="flex gap-1 items-center">
-                                    <span>Audit</span>
+                                    <span>{{ $t('audit') }}</span>
                                     <el-icon class="!p-0"><TopRight /></el-icon>
                                 </div>
                             </li>
@@ -44,23 +44,23 @@
                         </el-icon>
 
                         <div v-if="toggleLang" class="transition-all px-2 flex gap-2 items-center">
-                            <span class="cursor-pointer">Uz</span>
-                            <span class="cursor-pointer">En</span>
+                            <span @click="onLanguageChanged('uz')" class="cursor-pointer">Uz</span>
+                            <span @click="onLanguageChanged('en')" class="cursor-pointer">En</span>
+                            <span @click="onLanguageChanged('ru')" class="cursor-pointer">Ru</span>
                         </div>
                     </div>
                 </div>
                 <div class="text-white md:px-32 2xl:px-54 pt-[15%]">
                     <TransitionGroup name="slide-fade" appear>
-                        <p key="1" class="text-6xl font-semibold mb-2">It's our pleasure to serve you</p>
-                        <p key="2" class="text-[#CFA01A] text-6xl font-normal mb-6">AG ELD SERVICE</p>
-                        <p key="3" class="w-1/2 text-xl mb-8">We are committed to providing reliable and professional ELD solutions
-                            tailored to meet the needs of modern trucking businesses</p>
+                        <p key="1" class="text-6xl font-semibold mb-2">{{ $t('main1') }}</p>
+                        <p key="2" class="text-[#CFA01A] text-6xl font-normal mb-6">ADVANCED GROWTH ELD SERVICE</p>
+                        <p key="3" class="w-1/2 text-xl mb-8">{{ $t('main2') }}</p>
                     </TransitionGroup>
                     <Transition name="slide-btn" appear>
                         <div class="flex gap-10">
                             <a href="https://t.me/ag_eld_service" target="_blank">
                                 <el-button class="!text-base !border-none !py-7 !px-5 transition-all !duration-500 !bg-[#CFA01A] !text-white hover:scale-[1.08]">
-                                    <span>Contact Us</span>
+                                    <span>{{ $t('contactUs') }}</span>
                                     <el-icon class="mt-1 ml-4 text-lg"><TopRight /></el-icon>
                                 </el-button>
                             </a>
@@ -103,7 +103,7 @@
                 <img @click="toggleChatBot = !toggleChatBot" class="scale-120" src="@/assets/tabler-icons/message-dots.svg" alt="">
                 <div v-if="toggleChatBot" class="absolute flex flex-col w-[22rem] max-h-[26rem] min-h-60 bottom-14 -right-4 rounded-xl shadow-2xl bg-gray-50 overflow-hidden transition-all duration-700">
                     <div class="flex justify-between items-center text-white text-sm font-semibold p-4 bg-[#CFA01A]">
-                        <span>CHAT BOT</span>
+                        <span>{{ $t('chatbot') }}</span>
                         <el-icon @click="toggleChatBot = false" :size="16"><CloseBold class="hover:text-gray-500" /></el-icon>
                     </div>
                     <div id="chat-area" class="text-black p-4 font-medium text-sm flex-1 overflow-y-auto min-h-0 flex flex-col justify-between gap-4">
@@ -119,11 +119,11 @@
                     </div>
                     <div v-else class="w-full flex justify-between gap-3 p-4 pt-2">
                         <p @click="onClickTgButton" class="text-[#CFA01A] w-full text whitespace-nowrap text-center text-sm font-medium bg-white
-                                border border-[#CFA01A] py-2 hover:bg-[#CFA01A] hover:text-white rounded-2xl">Telegram</p>
+                                border border-[#CFA01A] py-2 hover:bg-[#CFA01A] hover:text-white rounded-2xl">{{ $t('telegram') }}</p>
                         <p @click="onClickInstButton" class="text-[#CFA01A] w-full text whitespace-nowrap text-center text-sm font-medium bg-white
-                                border border-[#CFA01A] py-2 hover:bg-[#CFA01A] hover:text-white rounded-2xl">Instagram</p>
+                                border border-[#CFA01A] py-2 hover:bg-[#CFA01A] hover:text-white rounded-2xl">{{ $t('instagram') }}</p>
                         <p @click="onClickMsgButton" class="text-[#CFA01A] w-full text whitespace-nowrap text-center text-sm font-medium bg-white
-                                border border-[#CFA01A] py-2 hover:bg-[#CFA01A] hover:text-white rounded-2xl">Message</p>
+                                border border-[#CFA01A] py-2 hover:bg-[#CFA01A] hover:text-white rounded-2xl">{{ $t('message') }}</p>
                     </div>
                 </div>
             </div>
@@ -132,7 +132,7 @@
 </template>
 <script setup>
 import {CloseBold, Message, PhoneFilled, Setting, TopRight} from "@element-plus/icons-vue";
-import {nextTick, ref} from "vue";
+import {computed, nextTick, onMounted, ref} from "vue";
 import Services from "@/views/main/Services.vue";
 import AboutUs from "@/views/main/AboutUs.vue";
 import Price from "@/views/main/Price.vue";
@@ -141,29 +141,51 @@ import EldApps from "@/views/main/EldApps.vue";
 import Comments from "@/views/main/Comments.vue";
 import router from "@/router/index.js";
 import * as emailjs from "@emailjs/browser";
+import {useI18n} from "vue-i18n";
 
 const toggleLang = ref(false);
 const toggleChatBot = ref(true)
 const clickMessage = ref(false)
 const inputMessage = ref(null)
 const loadingSendBtn = ref(false)
+
+const { t, locale } = useI18n();
+if (localStorage.getItem('lang')) locale.value = localStorage.getItem('lang');
+const currentLang = ref(locale.value)
+
 const messageList = ref([
     {
-        description: 'Hey there! 👋 Welcome to ELD Service. Choose an option below or send us a message.',
+        description: t('chatWelcome'),
         type: 'RECEIVED'
     }
 ])
 
+const onLanguageChanged = (current) => {
+    locale.value = current
+    localStorage.setItem('lang', current)
+    currentLang.value = current
+
+    if (messageList.value.length > 0) {
+        messageList.value[0].description = t('chatWelcome')
+    }
+}
 
 const onClickTgButton = async () => {
+    const messages = {
+        en: 'You can reach us on Telegram at <a href="https://t.me/ag_eld_service" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">@ag_eld_service</a>. We’ll be happy to assist you! 😊',
+
+        uz: 'Biz bilan Telegram orqali bog‘lanishingiz mumkin: <a href="https://t.me/ag_eld_service" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">@ag_eld_service</a>. Sizga yordam berishdan mamnun bo‘lamiz! 😊',
+
+        ru: 'Вы можете связаться с нами в Telegram: <a href="https://t.me/ag_eld_service" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">@ag_eld_service</a>. Будем рады вам помочь! 😊'
+    }
+
     messageList.value.push(
         {
             description: 'Telegram',
             type: 'SEND'
         },
         {
-            description: 'You can reach us on Telegram at <a href="https://t.me/ag_eld_service" target="_blank"' +
-                ' class="text-blue-500 hover:underline">@ag_eld_service.</a> We’ll be happy to assist you! 😊',
+            description: messages[locale.value] || messages.en,
             type: 'RECEIVED'
         }
     )
@@ -172,21 +194,30 @@ const onClickTgButton = async () => {
 
     const chat = document.getElementById('chat-area')
 
-    chat.scrollTo({
-        top: chat.scrollHeight,
-        behavior: 'smooth'
-    })
+    if (chat) {
+        chat.scrollTo({
+            top: chat.scrollHeight,
+            behavior: 'smooth'
+        })
+    }
 }
 
 const onClickInstButton = async () => {
+    const messages = {
+        en: 'You can also connect with us on Instagram: 👉 <a href="https://www.instagram.com/ag_eld.group?stkn=MTVkbDc1eTg4YmJ1" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">Visit our Instagram</a>. Feel free to reach out — we’re happy to help! 😊',
+
+        uz: 'Biz bilan Instagram orqali ham bog‘lanishingiz mumkin: 👉 <a href="https://www.instagram.com/ag_eld.group?stkn=MTVkbDc1eTg4YmJ1" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">Instagram sahifamizga o‘ting</a>. Sizga yordam berishdan mamnun bo‘lamiz! 😊',
+
+        ru: 'Вы также можете связаться с нами в Instagram: 👉 <a href="https://www.instagram.com/ag_eld.group?stkn=MTVkbDc1eTg4YmJ1" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">Посетите наш Instagram</a>. Будем рады вам помочь! 😊'
+    }
+
     messageList.value.push(
         {
             description: 'Instagram',
             type: 'SEND'
         },
         {
-            description: 'You can also connect with us on Instagram: 👉 <a href="https://www.instagram.com/ag_eld.group?stkn=MTVkbDc1eTg4YmJ1"' +
-                ' target="_blank" class="text-blue-500 hover:underline">Visit our Instagram</a> Feel free to reach out — we’re happy to help! 😊',
+            description: messages[locale.value] || messages.en,
             type: 'RECEIVED'
         }
     )
@@ -195,30 +226,53 @@ const onClickInstButton = async () => {
 
     const chat = document.getElementById('chat-area')
 
-    chat.scrollTo({
-        top: chat.scrollHeight,
-        behavior: 'smooth'
-    })
+    if (chat) {
+        chat.scrollTo({
+            top: chat.scrollHeight,
+            behavior: 'smooth'
+        })
+    }
 }
-
 const onClickMsgButton = async () => {
     clickMessage.value = true
+
+    const messages = {
+        en: {
+            title: 'Have a <b>quick question?</b> Send us a message.',
+            description: 'Please leave your preferred contact details at the end of your message so we can get in touch with you. 😊'
+        },
+
+        uz: {
+            title: '<b>Savolingiz bormi?</b> Bizga xabar yuboring.',
+            description: 'Siz bilan bog‘lanishimiz uchun xabaringiz oxirida o‘zingizga qulay aloqa ma’lumotlarini qoldiring. 😊'
+        },
+
+        ru: {
+            title: 'Есть <b>вопрос?</b> Напишите нам.',
+            description: 'Пожалуйста, оставьте удобные для вас контактные данные в конце сообщения, чтобы мы могли с вами связаться. 😊'
+        }
+    }
+
+    const message = messages[locale.value] || messages.en
+
+    const messageIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"' +
+        ' viewBox="0 0 24 24" fill="#00345B" class="icon icon-tabler icons-tabler-filled icon-tabler-message-chatbot inline-block' +
+        ' align-middle ml-1"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 3a4 4 0 0 1 4 4v8a4 4 0 0 1 -4' +
+        ' 4h-4.724l-4.762 2.857a1 1 0 0 1 -1.508 -.743l-.006 -.114v-2h-1a4 4 0 0 1 -3.995 -3.8l-.005 -.2v-8a4 4 0 0 1 4 -4zm-2.8' +
+        ' 9.286a1 1 0 0 0 -1.414 .014a2.5 2.5 0 0 1 -3.572 0a1 1 0 0 0 -1.428 1.4a4.5 4.5 0 0 0 6.428 0a1 1 0 0 0 -.014 -1.414m-5.69' +
+        ' -4.286h-.01a1 1 0 1 0 0 2h.01a1 1 0 0 0 0 -2m5 0h-.01a1 1 0 0 0 0 2h.01a1 1 0 0 0 0 -2" /></svg>'
+
     messageList.value.push(
         {
             description: 'Send message',
             type: 'SEND'
         },
         {
-            description: 'Have a <b>quick question?</b> Send us a message.<svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24"' +
-                ' viewBox="0 0 24 24" fill="#00345B" class="icon icon-tabler icons-tabler-filled icon-tabler-message-chatbot inline-block' +
-                ' align-middle ml-1"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 3a4 4 0 0 1 4 4v8a4 4 0 0 1 -4' +
-                ' 4h-4.724l-4.762 2.857a1 1 0 0 1 -1.508 -.743l-.006 -.114v-2h-1a4 4 0 0 1 -3.995 -3.8l-.005 -.2v-8a4 4 0 0 1 4 -4zm-2.8' +
-                ' 9.286a1 1 0 0 0 -1.414 .014a2.5 2.5 0 0 1 -3.572 0a1 1 0 0 0 -1.428 1.4a4.5 4.5 0 0 0 6.428 0a1 1 0 0 0 -.014 -1.414m-5.69' +
-                ' -4.286h-.01a1 1 0 1 0 0 2h.01a1 1 0 0 0 0 -2m5 0h-.01a1 1 0 0 0 0 2h.01a1 1 0 0 0 0 -2" /></svg>',
+            description: message.title + messageIcon,
             type: 'RECEIVED'
         },
         {
-            description: 'Please leave your preferred contact details at the end of your message so we can get in touch with you. 😊',
+            description: message.description,
             type: 'RECEIVED'
         }
     )
@@ -227,16 +281,34 @@ const onClickMsgButton = async () => {
 
     const chat = document.getElementById('chat-area')
 
-    chat.scrollTo({
-        top: chat.scrollHeight,
-        behavior: 'smooth'
-    })
+    if (chat) {
+        chat.scrollTo({
+            top: chat.scrollHeight,
+            behavior: 'smooth'
+        })
+    }
 }
 
 const onMessageSended = async () => {
     if (inputMessage.value) {
-
         loadingSendBtn.value = true
+
+        const messages = {
+            en: {
+                success: 'We’ve received your message 💌 We’ll get back to you shortly through the contact details you provided. ✅ Thank you for reaching out! 😊',
+                error: 'Oops! Something went wrong. Please try again later. ⏱️'
+            },
+            uz: {
+                success: 'Xabaringizni qabul qildik 💌 Siz qoldirgan aloqa ma’lumotlari orqali tez orada siz bilan bog‘lanamiz. ✅ Biz bilan bog‘langaningiz uchun rahmat! 😊',
+                error: 'Ups! Nimadir noto‘g‘ri ketdi. Iltimos, keyinroq qayta urinib ko‘ring. ⏱️'
+            },
+            ru: {
+                success: 'Мы получили ваше сообщение 💌 Скоро свяжемся с вами по указанным контактным данным. ✅ Спасибо, что обратились к нам! 😊',
+                error: 'Упс! Что-то пошло не так. Пожалуйста, попробуйте ещё раз позже. ⏱️'
+            }
+        }
+
+        const message = messages[locale.value] || messages.en
 
         try {
             await emailjs.send(
@@ -258,20 +330,21 @@ const onMessageSended = async () => {
                     type: 'SEND'
                 },
                 {
-                    description: 'We’ve received your message 💌 We’ll get back to you shortly through the contact details you provided. ✅ Thank you for reaching out! 😊',
+                    description: message.success,
                     type: 'RECEIVED'
                 }
             )
 
         } catch (error) {
             console.error(error.message)
+
             messageList.value.push(
                 {
                     description: inputMessage.value,
                     type: 'SEND'
                 },
                 {
-                    description: 'Oops! Something went wrong. Please try again later. ⏱️',
+                    description: message.error,
                     type: 'RECEIVED'
                 }
             )
@@ -286,11 +359,14 @@ const onMessageSended = async () => {
 
     const chat = document.getElementById('chat-area')
 
-    chat.scrollTo({
-        top: chat.scrollHeight,
-        behavior: 'smooth'
-    })
+    if (chat) {
+        chat.scrollTo({
+            top: chat.scrollHeight,
+            behavior: 'smooth'
+        })
+    }
 }
+
 
 const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)

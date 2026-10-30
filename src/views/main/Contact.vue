@@ -16,11 +16,11 @@
             <div class="w-full text-white px-8 py-10 rounded-lg shadow-xl">
                 <div class="w-full flex">
                     <div class="w-full">
-                        <p class="text-2xl mb-6">Services</p>
+                        <p class="text-2xl mb-6">{{ $t('services') }}</p>
                         <p v-for="item in services" class="text-sm text-[#adb5bd] mb-3">{{ item }}</p>
                     </div>
                     <div class="w-full">
-                        <p class="text-2xl mb-6">Contact Us</p>
+                        <p class="text-2xl mb-6">{{ $t('contactUs') }}</p>
                         <a href="https://t.me/ag_eld_service" target="_blank" class="w-max flex items-center gap-2 text-sm text-[#adb5bd] mb-3 hover:text-white font-medium border-b border-transparent hover:border-white pb-1">
                             <span>Telegram</span>
                         </a>
@@ -35,14 +35,14 @@
                         </a>
                     </div>
                     <div class="w-full">
-                        <p class="text-2xl mb-6">Support</p>
+                        <p class="text-2xl mb-6">{{ $t('support') }}</p>
                         <a href="tel:+998779669812" class="w-max flex items-center gap-3 support">
                             <p class="w-10 h-10 support-child rounded-full flex justify-center items-end">
                                 <PhoneFilled />
                             </p>
                             <p class="text-sm text-[#adb5bd]">(77) 966 98 12</p>
                         </a>
-                        <p class="text-2xl my-6">Follow on</p>
+                        <p class="text-2xl my-6">{{ $t('followOn') }}</p>
                         <div class="w-max flex gap-4">
                             <a href="https://t.me/USA_truckers_eld_service" target="_blank" class="w-max flex items-center gap-3">
                                 <p class="w-10 h-10 rounded-full flex justify-center items-center border border-gray-500/30 hover:border-white">
@@ -69,20 +69,20 @@
                 </div>
                 <el-divider class="!border-[#adb5bd]/20" />
                 <div class="flex justify-between items-center">
-                    <p class="text-sm text-[#adb5bd]">© Copyright 2026 AG ELD Service</p>
+                    <p class="text-sm text-[#adb5bd]">© Copyright 2026 AG ELD Service{{ $t('copyright') }}</p>
                     <ul class="flex text-sm gap-4 text-white pb-3">
                         <li @click.prevent="scrollToSection('services')"
-                            class="hover:text-gray-400 cursor-pointer">Services</li>
+                            class="hover:text-gray-400 cursor-pointer">{{ $t('services') }}</li>
                         <li @click.prevent="scrollToSection('about-us')"
-                            class="hover:text-gray-400 cursor-pointer">About</li>
+                            class="hover:text-gray-400 cursor-pointer">{{ $t('about') }}</li>
                         <li @click.prevent="scrollToSection('price')"
-                            class="hover:text-gray-400 cursor-pointer">Price</li>
+                            class="hover:text-gray-400 cursor-pointer">{{ $t('price') }}</li>
                         <li @click.prevent="scrollToSection('contact')"
-                            class="hover:text-gray-400 cursor-pointer">Contact Us</li>
+                            class="hover:text-gray-400 cursor-pointer">{{ $t('contactUs') }}</li>
                         <li @click="router.push({name: 'AuditService'})"
                             class="hover:text-gray-400 cursor-pointer ml-4">
                             <div class="flex gap-1 items-center">
-                                <span>Audit</span>
+                                <span>{{ $t('audit') }}</span>
                                 <el-icon class="!p-0"><TopRight /></el-icon>
                             </div>
                         </li>

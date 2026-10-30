@@ -1,64 +1,64 @@
 <template>
     <el-dialog v-model="visible" class="price-dialog" width="50%" @close="close" close-on-click-modal>
         <template #title>
-            <p class="font-medium text-4xl text-gray-800">Get Your Estimate and <span class="text-[#CFA01A]">Send It to Us</span></p>
+            <p class="font-medium text-4xl text-gray-800">{{ $t('priceDialogHeader1') }} <span class="text-[#CFA01A]">{{ $t('priceDialogHeader2') }}</span></p>
         </template>
         <div>
-            <p class="mt-2 mb-10">Share a few details about your needs, and our team will review your request and get back to you within one business day.</p>
+            <p class="mt-2 mb-10">{{ $t('priceDialogInfo') }}</p>
             <el-form :model="form" :rules="formRules" label-position="top" ref="formRef">
                 <el-row :gutter="20">
                     <el-col :span="12">
-                        <el-form-item prop="fullName" label="Full Name">
-                            <el-input v-model="form.fullName" placeholder="Full Name" clearable />
+                        <el-form-item prop="fullName" :label="$t('fullName')">
+                            <el-input v-model="form.fullName" :placeholder="$t('fullName')" clearable />
                         </el-form-item>
                     </el-col>
                     <el-col :span="12">
-                        <el-form-item prop="email" label="Your email">
+                        <el-form-item prop="email" :label="$t('yourEmail')">
                             <el-input v-model="form.email" type="email" placeholder="example@gmail.com" clearable />
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row :gutter="20">
                     <el-col :span="12">
-                        <el-form-item prop="phoneNumber" label="Phone number">
+                        <el-form-item prop="phoneNumber" :label="$t('pnumber')">
                             <el-input v-model="form.phoneNumber" placeholder="+1 000 000 0000" clearable />
                         </el-form-item>
                     </el-col>
                     <el-col :span="12">
-                        <el-form-item prop="billingPeriod" label="Billing Period">
+                        <el-form-item prop="billingPeriod" :label="$t('billingPeriod')">
                             <el-select v-model="form.billingPeriod" placeholder="Select..">
-                                <el-option label="Monthly" value="MONTHLY" />
-                                <el-option label="Yearly" value="YEARLY" />
+                                <el-option :label="$t('monthly')" value="MONTHLY" />
+                                <el-option :label="$t('yearly')" value="YEARLY" />
                             </el-select>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row :gutter="20">
                     <el-col :span="12">
-                        <el-form-item prop="truckNumber" label="Number of trucks">
+                        <el-form-item prop="truckNumber" :label="$t('numberTrucks')">
                             <el-slider v-model="form.truckNumber" :min="1" :max="300" show-input />
                         </el-form-item>
                     </el-col>
                     <el-col :span="12">
-                        <el-form-item prop="eldName" label="Service name">
-                            <el-input v-model="form.eldName" placeholder="Your Service name" clearable />
+                        <el-form-item prop="eldName" :label="$t('serviceName')">
+                            <el-input v-model="form.eldName" :placeholder="$t('yourServiceName')" clearable />
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col>
                         <el-form-item prop="description">
-                            <el-input v-model="form.description" type="textarea" placeholder="Anything else you'd like us to know..." :rows="3" clearable />
+                            <el-input v-model="form.description" type="textarea" :placeholder="$t('description')" :rows="3" clearable />
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <div class="py-2 flex gap-4">
-                    <p class="text-xl">Overall: <span class="text-gray-800 font-semibold">{{ new Intl.NumberFormat().format(calculateTotalPrice()) }}$</span></p>
+                    <p class="text-xl">{{ $t('overall') }}: <span class="text-gray-800 font-semibold">{{ new Intl.NumberFormat().format(calculateTotalPrice()) }}$</span></p>
                     <p class="text-[#02A76F] font-medium">{{ form.truckNumber > 5 && form.truckNumber < 10 ? '-8,3%' : form.truckNumber >= 10 ? '-16,7%' : '' }}</p>
                 </div>
                 <div class="w-full flex justify-end py-2">
                     <el-button @click="submit" :loading="loadingSendBtn" :icon="Message" class="!bg-[#CFA01A] active:!bg-[#CFA01A] active:!text-white
-                        hover:!text-[#CFA01A] hover:!bg-white !py-6 !px-6" type="warning">Send Message</el-button>
+                        hover:!text-[#CFA01A] hover:!bg-white !py-6 !px-6" type="warning">{{ $t('sendMessage') }}</el-button>
                 </div>
             </el-form>
         </div>
@@ -70,6 +70,7 @@ import {ref, watch} from "vue";
 import {Message} from "@element-plus/icons-vue";
 import * as emailjs from "@emailjs/browser";
 import {ElMessage} from "element-plus";
+import {useI18n} from "vue-i18n";
 
 
 const props = defineProps({
@@ -79,6 +80,7 @@ const props = defineProps({
     }
 })
 
+const { t } = useI18n()
 const visible = ref(false);
 const loadingSendBtn = ref(false);
 const defaultForm = () => ({
@@ -93,13 +95,13 @@ const defaultForm = () => ({
 const formRef = ref(null)
 const form = ref(defaultForm())
 const formRules = ref({
-    fullName: [{required: true, message: 'This field is required', trigger: 'change'}],
-    email: [{required: true, message: 'This field is required', trigger: 'change'}],
-    phoneNumber: [{required: true, message: 'This field is required', trigger: 'change'}],
-    billingPeriod: [{required: true, message: 'This field is required', trigger: 'change'}],
-    truckNumber: [{required: true, message: 'This field is required', trigger: 'change'}],
-    eldName: [{required: true, message: 'This field is required', trigger: 'change'}],
-    description: [{required: false, message: 'This field is not required', trigger: 'change'}],
+    fullName: [{required: true, message: t('requiredMessage'), trigger: 'change'}],
+    email: [{required: true, message: t('requiredMessage'), trigger: 'change'}],
+    phoneNumber: [{required: true, message: t('requiredMessage'), trigger: 'change'}],
+    billingPeriod: [{required: true, message: t('requiredMessage'), trigger: 'change'}],
+    truckNumber: [{required: true, message: t('requiredMessage'), trigger: 'change'}],
+    eldName: [{required: true, message: t('requiredMessage'), trigger: 'change'}],
+    description: [{required: false, message: t('notRequiredMessage'), trigger: 'change'}],
 })
 
 const submit = async () => {

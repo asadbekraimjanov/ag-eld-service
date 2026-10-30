@@ -1,31 +1,31 @@
 <template>
     <el-dialog v-model="visible" class="price-dialog !w-1/2 sm:w-full " @close="close" close-on-click-modal>
         <template #title>
-            <p class="font-medium text-4xl text-gray-800">Get In Touch <span class="text-[#00345b]">with Us</span></p>
+            <p class="font-medium text-4xl text-gray-800">{{ $t('auditDialogHeader1') }} <span class="text-[#00345b]">{{ $t('auditDialogHeader2') }}</span></p>
         </template>
         <div>
-            <p class="mt-2 mb-10">Submit your information for our audit service, and our team will contact you shortly to discuss your needs and next steps.</p>
+            <p class="mt-2 mb-10">{{ $t('auditDialogInfo') }}</p>
             <el-form :model="form" :rules="formRules" label-position="top" ref="formRef">
                 <el-row :gutter="20">
                     <el-col :span="12">
-                        <el-form-item prop="fullName" label="Full Name">
-                            <el-input v-model="form.fullName" placeholder="Full Name" clearable />
+                        <el-form-item prop="fullName" :label="$t('fullName')">
+                            <el-input v-model="form.fullName" :placeholder="$t('fullName')" clearable />
                         </el-form-item>
                     </el-col>
                     <el-col :span="12">
-                        <el-form-item prop="email" label="Your email">
+                        <el-form-item prop="email" :label="$t('yourEmail')">
                             <el-input v-model="form.email" type="email" placeholder="example@gmail.com" clearable />
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row :gutter="20">
                     <el-col :span="12">
-                        <el-form-item prop="phoneNumber" label="Phone number">
+                        <el-form-item prop="phoneNumber" :label="$t('pnumber')">
                             <el-input v-model="form.phoneNumber" placeholder="+1 000 000 0000" clearable />
                         </el-form-item>
                     </el-col>
                     <el-col :span="12">
-                        <el-form-item prop="eldVal" label="ELD setup">
+                        <el-form-item prop="eldVal" :label="$t('eldSetup')">
                             <el-select @change="onScoreChanged" v-model="form.eldVal" placeholder="Select">
                                 <el-option label="New < 1 year" :value="0" />
                                 <el-option label="1–3 years" :value="8" />
@@ -37,24 +37,24 @@
                 </el-row>
                 <el-row :gutter="20">
                     <el-col :span="12">
-                        <el-form-item prop="fleetSize" label="Fleet Size (trucks)">
+                        <el-form-item prop="fleetSize" :label="`${$t('fleetSize')} (${$t('trucks')})`">
                             <el-slider @change="onScoreChanged" v-model="form.fleetSize" :min="1" :max="150" show-input />
                         </el-form-item>
                     </el-col>
                     <el-col :span="12">
-                        <el-form-item prop="violations" label="HOS / ELD violations, last 12 months">
+                        <el-form-item prop="violations" :label="$t('violations')">
                             <el-slider @change="onScoreChanged" v-model="form.violations" :min="0" :max="20" show-input />
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row :gutter="20">
                     <el-col :span="12">
-                        <el-form-item prop="audit" label="Months since last safety audit (mo)">
+                        <el-form-item prop="audit" :label="$t('safetyAudit') + ' ' + $t('mo')">
                             <el-slider @change="onScoreChanged" v-model="form.audit" :min="0" :max="36" show-input />
                         </el-form-item>
                     </el-col>
                     <el-col :span="12">
-                        <el-form-item prop="score" :label="`Compliance Risk Score (${form.score}/100)`">
+                        <el-form-item prop="score" :label="`${$t('riskScore')} (${form.score}/100)`">
                             <el-slider v-model="form.score" :min="0" :max="100" class="slider-score" :style="{ '--el-slider-main-bg-color': sliderColor }" disabled />
                         </el-form-item>
                     </el-col>
@@ -62,14 +62,14 @@
                 <el-row>
                     <el-col>
                         <el-form-item prop="description">
-                            <el-input v-model="form.description" type="textarea" placeholder="Anything else you'd like us to know..." :rows="3" clearable />
+                            <el-input v-model="form.description" type="textarea" :placeholder="$t('description')" :rows="3" clearable />
                         </el-form-item>
                     </el-col>
                 </el-row>
 
                 <div class="w-full flex justify-end py-2">
                     <el-button @click="submit" :loading="loadingSendBtn" :icon="Message" class="!bg-[#00345b] active:!bg-[#00345b] active:!text-white
-                        hover:!text-[#00345b] hover:!bg-white !py-6 !px-6 !border-[#00345b]" type="warning">Send Message</el-button>
+                        hover:!text-[#00345b] hover:!bg-white !py-6 !px-6 !border-[#00345b]" type="warning">{{ $t('sendMessage') }}</el-button>
                 </div>
             </el-form>
         </div>
@@ -81,8 +81,10 @@ import {computed, ref} from "vue";
 import {Message} from "@element-plus/icons-vue";
 import * as emailjs from "@emailjs/browser";
 import {ElMessage} from "element-plus";
+import {useI18n} from "vue-i18n";
 
 
+const { t } = useI18n()
 const visible = ref(false);
 const loadingSendBtn = ref(false);
 const defaultForm = () => ({
@@ -99,15 +101,15 @@ const defaultForm = () => ({
 const formRef = ref(null)
 const form = ref(defaultForm())
 const formRules = ref({
-    fullName: [{required: true, message: 'This field is required', trigger: 'change'}],
-    email: [{required: true, message: 'This field is required', trigger: 'change'}],
-    phoneNumber: [{required: true, message: 'This field is required', trigger: 'change'}],
-    fleetSize: [{required: true, message: 'This field is required', trigger: 'change'}],
-    violations: [{required: true, message: 'This field is required', trigger: 'change'}],
-    audit: [{required: true, message: 'This field is required', trigger: 'change'}],
-    eldVal: [{required: true, message: 'This field is required', trigger: 'change'}],
-    score: [{required: true, message: 'This field is required', trigger: 'change'}],
-    description: [{required: false, message: 'This field is not required', trigger: 'change'}],
+    fullName: [{required: true, message: t('requiredMessage'), trigger: 'change'}],
+    email: [{required: true, message: t('requiredMessage'), trigger: 'change'}],
+    phoneNumber: [{required: true, message: t('requiredMessage'), trigger: 'change'}],
+    fleetSize: [{required: true, message: t('requiredMessage'), trigger: 'change'}],
+    violations: [{required: true, message: t('requiredMessage'), trigger: 'change'}],
+    audit: [{required: true, message: t('requiredMessage'), trigger: 'change'}],
+    eldVal: [{required: true, message: t('requiredMessage'), trigger: 'change'}],
+    score: [{required: true, message: t('requiredMessage'), trigger: 'change'}],
+    description: [{required: false, message: t('notRequiredMessage'), trigger: 'change'}],
 })
 
 const setupOptions = ref({

@@ -1,8 +1,8 @@
 <template>
     <p class="text-center mt-10 text-2xl font-bold text-gray-800">
-        Works with these
-        <span class="text-[#2B69ED]">ELD platforms</span>
-        and supports the platform of your choice
+        {{ $t('apps1') }}
+        <span class="text-[#2B69ED]">{{ $t('apps2') }}</span>
+        {{ $t('apps3') }}
     </p>
 
     <div class="slider-wrapper mt-10">

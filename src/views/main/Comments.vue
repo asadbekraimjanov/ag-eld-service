@@ -2,152 +2,58 @@
     <section>
         <!-- Title -->
         <h2 class="text-4xl text-gray-800 text-center font-semibold">
-            What
-            <span class="text-[#CFA01A]">Our Clients</span>
-            Say
+            {{ $t('commentary1') }}
+            <span class="text-[#CFA01A]">{{ $t('commentary2') }}</span>
+            {{ $t('commentary3') }}
         </h2>
 
         <!-- Carousel -->
         <div class="relative w-full mx-auto mt-16">
-
             <!-- Viewport -->
-            <div
-                ref="carouselRef"
-                class="overflow-hidden"
-            >
+            <div ref="carouselRef" class="overflow-hidden">
                 <!-- Track -->
-                <div
-                    class="flex gap-6"
-                    :class="{
-                        'transition-transform duration-500 ease-in-out':
-                            isTransitioning
-                    }"
-                    :style="{
-                        transform: `translateX(-${translateX}px)`
-                    }"
-                    @transitionend="handleTransitionEnd"
-                >
-                    <article
-                        v-for="testimonial in carouselTestimonials"
-                        :key="testimonial.key"
-                        class="shrink-0 w-[30rem]
-                               bg-[#E9ECEF] rounded-lg p-7
-                               flex flex-col
-                               shadow-sm hover:shadow-lg
-                               transition-all duration-300"
-                    >
+                <div class="flex gap-6" :class="{'transition-transform duration-500 ease-in-out': isTransitioning}"
+                    :style="{transform: `translateX(-${translateX}px)`}" @transitionend="handleTransitionEnd">
+                    <article v-for="testimonial in carouselTestimonials" :key="testimonial.key"
+                        class="shrink-0 w-[30rem] bg-[#E9ECEF] rounded-lg p-7 flex flex-col shadow-sm hover:shadow-lg transition-all duration-300">
                         <!-- User -->
                         <div class="flex items-center gap-4">
-                            <img
-                                :src="testimonial.image"
-                                :alt="testimonial.name"
-                                class="w-14 h-14 rounded-full object-cover"
-                            />
-
+                            <img :src="testimonial.image" :alt="testimonial.name" class="w-14 h-14 rounded-full object-cover" />
                             <div>
-                                <h3 class="text-lg font-semibold text-gray-800">
-                                    {{ testimonial.name }}
-                                </h3>
-
-                                <p
-                                    class="text-[#2B69ED] font-medium text-xs tracking-wide"
-                                >
-                                    {{ testimonial.position }}
-                                </p>
+                                <h3 class="text-lg font-semibold text-gray-800">{{ testimonial.name }}</h3>
+                                <p class="text-[#2B69ED] font-medium text-xs tracking-wide">{{ testimonial.position }}</p>
                             </div>
                         </div>
-
                         <!-- Comment -->
-                        <p
-                            class="mt-7 text-gray-500 text-xl leading-9 flex-1"
-                        >
-                            {{ testimonial.text }}
-                        </p>
-
+                        <p class="mt-7 text-gray-500 text-xl leading-9 flex-1">{{ testimonial.text }}</p>
                         <!-- Rating -->
                         <div class="flex gap-1.5 mt-6">
-                            <StarRate
-                                v-for="star in testimonial.rating"
-                                :key="star"
-                            />
+                            <StarRate v-for="star in testimonial.rating" :key="star" />
                         </div>
                     </article>
                 </div>
             </div>
-
             <!-- Pagination -->
             <div class="flex items-center justify-center gap-6 mt-10">
-
                 <!-- Previous -->
-                <button
-                    @click="prev"
-                    class="w-10 h-10 flex items-center justify-center
-                           rounded-full border border-gray-300
-                           text-gray-600
-                           hover:bg-[#CFA01A]
-                           hover:border-[#CFA01A]
-                           hover:text-white
-                           active:scale-95
-                           transition-all duration-300"
-                    aria-label="Previous testimonial"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="2"
-                        stroke="currentColor"
-                        class="w-4 h-4"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M15.75 19.5 8.25 12l7.5-7.5"
-                        />
+                <button @click="prev" aria-label="Previous testimonial"
+                    class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600
+                           hover:bg-[#CFA01A] hover:border-[#CFA01A] hover:text-white active:scale-95 transition-all duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                     </svg>
                 </button>
-
                 <!-- Page -->
                 <div class="flex items-center gap-2">
-                    <span class="font-medium text-lg text-gray-800">
-                        {{ currentPage }}
-                    </span>
-
-                    <span class="font-medium text-lg text-gray-400">
-                        /
-                    </span>
-
-                    <span class="font-medium text-lg text-gray-500">
-                        {{ testimonials.length }}
-                    </span>
+                    <span class="font-medium text-lg text-gray-800">{{ currentPage }}</span>
+                    <span class="font-medium text-lg text-gray-400">/</span>
+                    <span class="font-medium text-lg text-gray-500">{{ testimonials.length }}</span>
                 </div>
-
                 <!-- Next -->
-                <button
-                    @click="next"
-                    class="w-10 h-10 flex items-center justify-center
-                           rounded-full border border-gray-300
-                           text-gray-600
-                           hover:bg-[#CFA01A]
-                           hover:border-[#CFA01A]
-                           hover:text-white
-                           active:scale-95
-                           transition-all duration-300"
-                    aria-label="Next testimonial"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="2"
-                        stroke="currentColor"
-                        class="w-4 h-4"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="m8.25 4.5 7.5 7.5-7.5 7.5"
-                        />
+                <button @click="next" aria-label="Next testimonial" class="w-10 h-10 flex items-center justify-center rounded-full
+                        border border-gray-300 text-gray-600 hover:bg-[#CFA01A] hover:border-[#CFA01A] hover:text-white active:scale-95 transition-all duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                     </svg>
                 </button>
 

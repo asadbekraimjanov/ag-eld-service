@@ -7,15 +7,15 @@
             <div class="flex justify-between items-start gap-20">
                 <img src="/logo.png" class="w-20 h-20 opacity-85 -translate-y-5" alt="">
                 <div class="flex justify-between items-center gap-6">
-                    <p @click="router.push({name: 'Home'})" class="cursor-pointer -mt-1 hover:text-gray-400 transition-colors">Main</p>
+                    <p @click="toHome" class="cursor-pointer -mt-1 hover:text-gray-400 transition-colors">{{ $t('main') }}</p>
                     <p class="flex gap-1 items-center cursor-pointer border-b border-[#dba53f] pb-1 text-white">
-                        <span>Audit</span>
+                        <span>{{ $t('audit') }}</span>
                         <el-icon class="!p-0"><TopRight /></el-icon>
                     </p>
                 </div>
             </div>
 
-            <div class="flex justify-between gap-16">
+            <div class="flex justify-between gap-12">
                 <div class="-translate-y-2 text-white flex items-center gap-2 cursor-pointer hover:text-[#83ddeb] transition-colors">
                     <el-icon><PhoneFilled /></el-icon>
                     <span>(77) 966 98 12</span>
@@ -26,19 +26,28 @@
                     <span class="h-1.5 w-1.5 rounded-full bg-[#dba53f] shadow-[0_0_0_3px_rgba(219,165,63,.18)]"/>
                     Free Tool
                 </span>
+
+                <div class="relative cursor-pointer">
+                    <p @click="toggleLang = !toggleLang">{{ locale.toUpperCase() }}</p>
+
+                    <div v-if="toggleLang" class="absolute shadow-custom -left-2">
+                        <p @click="onLanguageChanged('en')" class="bg-blue-900 w-16 px-1 hover:bg-blue-800">En</p>
+                        <p @click="onLanguageChanged('uz')" class="bg-blue-900 w-16 px-1 hover:bg-blue-800">Uz</p>
+                        <p @click="onLanguageChanged('ru')" class="bg-blue-900 w-16 px-1 hover:bg-blue-800">Ru</p>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="mx-auto max-w-[1040px]">
             <h1 class="mb-3 max-w-3xl text-3xl font-semibold leading-[1.08] sm:text-[42px] text-white">
-                How audit-ready is
-                <span class="text-[#dba53f]">your fleet</span>,
-                right now?
+                {{ $t('auditText1') }}
+                <span class="text-[#dba53f]">{{ $t('auditText2') }}</span>,
+                {{ $t('auditText3') }}
             </h1>
 
             <p class="mb-9 max-w-[600px] text-base leading-[1.6] text-[#aab6c8]">
-                Answer four questions about your operation. We'll estimate your compliance risk the same way our
-                Safety Audit team does on day one — before you spend a dollar on a full review.
+                {{ $t('auditInfo') }}
             </p>
 
             <div class="grid gap-5 md:grid-cols-[1.05fr_.95fr]">
@@ -47,51 +56,51 @@
                     <!-- Fleet size -->
                     <div class="mb-[22px]">
                         <div class="mb-2.5 flex items-baseline justify-between">
-                            <label for="fleetSize" class="text-[13.5px] font-semibold text-white">Fleet size</label>
+                            <label for="fleetSize" class="text-[13.5px] font-semibold text-white">{{ $t('fleetSize') }}</label>
 
                             <span class="text-[15px] font-medium text-[#e7b94f]">
-                                {{ fleetSize }} {{ fleetSize === 1 ? 'truck' : 'trucks' }}
+                                {{ fleetSize }} {{ fleetSize === 1 ? $t('truck') : $t('trucks') }}
                             </span>
                         </div>
 
                         <input id="fleetSize" v-model.number="fleetSize" type="range" min="1" max="150" step="1" class="range-input" />
 
-                        <p class="mt-1.5 text-xs text-[#91a0b5]">Number of trucks currently active on your DOT number</p>
+                        <p class="mt-1.5 text-xs text-[#91a0b5]">{{ $t('numberTrucksInfo') }}</p>
                     </div>
 
                     <!-- Violations -->
                     <div class="mb-[22px]">
                         <div class="mb-2.5 flex items-baseline justify-between">
                             <label for="violations" class="text-[13.5px] font-semibold text-white">
-                                HOS / ELD violations, last 12 months
+                                {{ $t('violations') }}
                             </label>
 
                             <span class="text-[15px] font-medium text-[#e7b94f]">{{ violations }}</span>
                         </div>
 
                         <input id="violations" v-model.number="violations" type="range" min="0" max="20" step="1" class="range-input" />
-                        <p class="mt-1.5 text-xs text-[#91a0b5]">Include logbook edits flagged in roadside inspections</p>
+                        <p class="mt-1.5 text-xs text-[#91a0b5]">{{ $t('violationsInfo') }}</p>
                     </div>
 
                     <!-- Audit -->
                     <div class="mb-[22px]">
                         <div class="mb-2.5 flex items-baseline justify-between">
                             <label for="audit" class="text-[13.5px] font-semibold text-white">
-                                Months since last safety audit
+                                {{ $t('safetyAudit') }}
                             </label>
 
-                            <span class="text-[15px] font-medium text-[#e7b94f]">{{ audit }} mo</span>
+                            <span class="text-[15px] font-medium text-[#e7b94f]">{{ audit }} {{ $t('mo') }}</span>
                         </div>
 
                         <input id="audit" v-model.number="audit" type="range" min="0" max="36" step="1" class="range-input" />
-                        <p class="mt-1.5 text-xs text-[#91a0b5]">Internal review or FMCSA compliance review — whichever was last</p>
+                        <p class="mt-1.5 text-xs text-[#91a0b5]">{{ $t('monthsInfo') }}</p>
                     </div>
 
                     <!-- ELD -->
                     <div>
                         <div class="mb-2.5">
                             <label class="text-[13.5px] font-semibold text-white">
-                                ELD setup
+                                {{ $t('eldSetup') }}
                             </label>
                         </div>
 
@@ -104,7 +113,7 @@
                         </div>
 
                         <p class="mt-1.5 text-xs text-[#91a0b5]">
-                            Age and type of your current ELD / logging setup
+                            {{ $t('eldSetupInfo') }}
                         </p>
                     </div>
                 </div>
@@ -112,7 +121,7 @@
                 <!-- RESULT -->
                 <div class="audit-panel flex flex-col items-center overflow-hidden rounded-[14px] border p-5 text-center sm:p-8">
                     <span class="mb-1.5 text-xs uppercase tracking-[.14em] text-[#aab8ca]">
-                        Compliance Risk Score
+                        {{ $t('riskScore') }}
                     </span>
 
                     <!-- Gauge -->
@@ -172,7 +181,7 @@
                             </svg>
                         </button>
                         <p class="mt-3.5 text-[11px] leading-[1.5] text-[#91a0b5]">
-                            Estimate only, based on the details above — not an official FMCSA rating. A full Safety Audit gives you the exact picture.
+                            {{ $t('estimate') }}
                         </p>
                     </div>
                 </div>
@@ -184,16 +193,20 @@
 </template>
 
 <script setup>
-import {computed, ref} from 'vue'
+import {computed, nextTick, onMounted, ref} from 'vue'
 import {PhoneFilled, TopRight} from "@element-plus/icons-vue";
 import router from "@/router/index.js";
 import SafetyAuditDialog from "@/components/dialogs/SafetyAuditDialog.vue";
+import {useI18n} from "vue-i18n";
 
 const dialog = ref(false)
+const toggleLang = ref(false)
 const fleetSize = ref(12)
 const violations = ref(2)
 const audit = ref(8)
 const eldVal = ref(8)
+const { t, locale } = useI18n()
+locale.value = localStorage.getItem('lang')
 
 const ARC_LEN = 377
 
@@ -216,34 +229,38 @@ const eldOptions = [
     }
 ]
 
-const BAND_COPY = {
+
+const BAND_COPY = computed(() => ({
     low: {
-        tag: 'Low Risk',
+        tag: t('bandCopyLow'),
         color: '#4fb37e',
-        text:
-            'Your fleet looks in solid shape. Keep the routine steady — a light Monitoring check-in will catch anything small before it grows.',
-        chips: ['Monitoring']
+        text: t('bandCopyLowText'),
+        chips: [t('serviceTwoTitle')]
     },
 
     medium: {
-        tag: 'Medium Risk',
+        tag: t('bandCopyMedium'),
         color: '#e0a83e',
-        text:
-            "Your logbook history looks reasonable, but it's been a while since your last review — small issues may be building up unnoticed.",
-        chips: ['Safety Audit', 'Monitoring']
+        text: t('bandCopyMediumText'),
+        chips: [t('safAudit'), t('serviceTwoTitle')]
     },
 
     high: {
-        tag: 'High Risk',
+        tag: t('bandCopyHigh'),
         color: '#e0594a',
-        text:
-            'This combination of violations, review gap, and ELD setup is the profile we see right before a costly roadside or FMCSA finding. Worth a look this week.',
+        text: t('bandCopyHighText'),
         chips: [
-            'Safety Audit',
-            '24/7 ELD Support',
-            'Consulting Service'
+            t('safAudit'),
+            t('serviceThreeTitle'),
+            t('consulting')
         ]
     }
+}))
+
+const onLanguageChanged = (lang) => {
+    locale.value = lang
+    localStorage.setItem('lang', lang)
+    toggleLang.value = false
 }
 
 const score = computed(() => {
@@ -280,7 +297,7 @@ const band = computed(() => {
 })
 
 const currentBand = computed(() => {
-    return BAND_COPY[band.value]
+    return BAND_COPY.value[band.value]
 })
 
 const riskTag = computed(() => {
@@ -316,17 +333,17 @@ const riskTagStyle = computed(() => {
 
 const ctaText = computed(() => {
     return band.value === 'high'
-        ? 'Get My Free Safety Snapshot — Priority'
-        : 'Get My Free Safety Snapshot'
+        ? t('snapshotPriority')
+        : t('snapshot')
 })
 
 function handleCta() {
-    console.log('fleetSize', fleetSize.value)
-    console.log('violations', violations.value)
-    console.log('audit', audit.value)
-    console.log('eldVal', eldVal.value)
-    console.log('score', score.value)
     dialog.value.open(fleetSize.value, violations.value, audit.value, eldVal.value, score.value)
+}
+
+const toHome = async () => {
+    await nextTick()
+    router.push({name: 'Home'})
 }
 </script>
 
@@ -587,5 +604,10 @@ function handleCta() {
     .cta-button {
         transition: none;
     }
+}
+
+.shadow-custom {
+    --tw-shadow: 0 0 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)
 }
 </style>
